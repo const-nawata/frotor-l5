@@ -1,1 +1,3 @@
-<div>FFF 555</div>
+@include('blocks/header')
+<div>Index Content</div>
+@include('blocks/footer')

@@ -27,3 +27,6 @@ Route::get('/', [
 	'uses' => 'IndexController@getIndex'
 ]);
 
+Route::controller('index', 'IndexController');
+
+Route::get('dashboard', 'IndexController@getDashboard');
