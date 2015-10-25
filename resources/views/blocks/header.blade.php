@@ -28,24 +28,7 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-
-<script type="text/javascript">
-
-</script>
-
-<?php /* ?>
-	<link rel="stylesheet" href="/css/bootstrap-multiselect.css">
-
-
-	<link rel="stylesheet" href="/css/c-nina-main.css">
-
-	<script src="/js/bootstrap-multiselect.js"></script>
-	<script src="/js/c-nina.js"></script>
-	<script src="/js/c-nina-table.js"></script>
-
-<?php */ ?>
-
-
+	<link rel="stylesheet" href="/css/rotor.css">
 
 @yield('headExtra')
 

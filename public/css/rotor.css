@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+html, body{
+  height: 99.82%;
+  background-color: #d8eff1;
+  margin: 0;
+  padding: 0;
+}
+input{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px ridge #495198;
+    font-size: 14px;
+}
+td{
+	color: #36006c;
+	font-size: 18px;
+}
+button{
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 17px;
+	border: 1px ridge #495198;
+	border-radius: 3px;
+	height: 28px;
+	vertical-align: -moz-middle-with-baseline;
+	cursor: pointer;
+	background-color: #c4d1b1;
+	color: #4d5b35;
+	width: 100px;
+}
+button:HOVER{
+	background-color: #d6dfc8;
+}
+button:active{
+	background-color: #4d5b35;
+	color: #c4d1b1
+}
+
+.next-btn{
+	background-color: #dd9bc6;
+	color: #86285b;
+}
+.next-btn:HOVER{
+	background-color: #eabfdb;
+}
+.next-btn:ACTIVE{
+	background-color: #86285b;
+	color: #edc9e0;
+}
+
+.main-tbl{
+	width: 100%;
+	height: 100%;
+}
+
+.db-id-td{
+	width: 70px;
+	text-align: left;
+	padding-left: 20px;
+	padding-right: 35px;
+	font-weight: bold;
+	color: #b7005b;
+}
+
+.input-control-td{
+	white-space: nowrap;
+	width: 1px;
+	padding-right: 60px;
+}
+
+.time-inp{
+	width: 50px;
+	padding-right: 3px;
+	text-align: right;
+}
+
+.control-td{
+	width: 1px;
+}
+
+.num-info-td{
+	/*width: 100%;*/
+	padding-left: 10px;
+	padding-right: 100px;
+	white-space: nowrap;
+}
+
+.last-payment{
+	font-family: arial;
+	padding-left: 140px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #e60073;
+	white-space: nowrap;
+}
+
+.frame-td{
+	height: 100%;
+}
+
+.main-fraim{
+	width: 100%;
+	height: 100%; 
+	border: none"
+}

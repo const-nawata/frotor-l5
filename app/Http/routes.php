@@ -30,3 +30,4 @@ Route::get('/', [
 Route::controller('index', 'IndexController');
 
 Route::get('dashboard', 'IndexController@getDashboard');
+Route::get('set', 'IndexController@getDashboard');
