@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>@yield('title') — {{ @trans('prompts.brand') }}</title>
+	<title>Frotor</title>
 	<meta content="text/html; charset=utf-8" http-equiv="content-type">
 	<meta name="keywords" content="bitcoin,btc,rotator,faucest">
 	<meta name="description" content="Faucests rotator">
