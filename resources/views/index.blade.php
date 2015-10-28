@@ -1,16 +1,16 @@
 @include('blocks/header')
 
-<div class="panel panel-info">
-	<div class="panel-heading">
+<div class="panel panel-info main-panel-content">
+	<div class="panel-heading index-heard">
 		<div class="btn-group" role="group" aria-label="...">
 			<button type="button" class="btn btn-default">Next</button>
-			<button type="button" class="btn btn-default">Refresh</button>
+			<button type="button" class="btn btn-default">Load</button>
 			<button type="button" class="btn btn-default">Settins</button>
 		</div>
 	</div>
 
-	<div class="panel-body">
-	    Panel content
+	<div class="panel-body ifraim-panel">
+	   <iframe id="main_fraim" class="main-fraim" src="http://rollingfaucet.com/"></iframe>
 	</div>
 </div>
 

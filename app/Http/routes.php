@@ -21,7 +21,6 @@
 // ]);
 
 
-
 Route::get('/', [
 	'as' => 'home',
 	'uses' => 'IndexController@getIndex'
@@ -31,3 +30,4 @@ Route::controller('index', 'IndexController');
 
 Route::get('dashboard', 'IndexController@getDashboard');
 Route::get('set', 'IndexController@getDashboard');
+Route::get('showfaucet', 'IndexController@getIfraimContent');

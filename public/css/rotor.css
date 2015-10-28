@@ -1,1 +1,33 @@
 @CHARSET "UTF-8";
+tml, body{
+  height: 99.82%;
+  background-color: #d8eff1;
+  margin: 0;
+  padding: 0;
+}
+.main-panel-content{
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+}
+
+div.panel button{
+	padding: 3px 5px;
+	width: 80px;
+}
+
+
+
+div.index-heard{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.main-fraim{
+	width: 100%;
+	height: 100%; 
+	border: none"
+}
+.ifraim-panel{
+	padding: 0;
+	height: 95.88%;
+}
