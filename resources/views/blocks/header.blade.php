@@ -29,7 +29,7 @@
 	<![endif]-->
 
 	<link rel="stylesheet" href="/css/rotor.css">
-	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/rotor.js"></script>
 
 @yield('headExtra')
 

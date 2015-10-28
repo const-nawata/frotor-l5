@@ -6,7 +6,7 @@ class IndexController extends Controller{
 
     public function getIndex(){
 
-    	return view( 'index', ['url'=>'dashboard'] );
+    	return view( 'index' );
     }
 //______________________________________________________________________________
 
@@ -22,7 +22,7 @@ class IndexController extends Controller{
     public function getNextFaucet(){
 
 
-info("Point 1");
+// info("Point 1");
 
 //     	return Response::json(['url'=>'http://bitcoinzebra.com/faucet']);
 //     	return Response::json(['url'=>'5556']);

@@ -12,8 +12,7 @@ tml, body{
 }
 
 div.panel button{
-	padding: 3px 5px;
-	width: 80px;
+	font-size: 14px;
 }
 
 
@@ -30,4 +29,22 @@ div.index-heard{
 .ifraim-panel{
 	padding: 0;
 	height: 95.88%;
+}
+
+.faucet-id-p{
+	padding-right: 10px;
+	font-size: 18px;
+	margin: 0;
+	vertical-align: middle;
+}
+
+div.index-heard p.faucet-id-p span.badge{
+	font-size: 16px;
+}
+
+
+.input-control-td{
+	white-space: nowrap;
+	width: 1px;
+	padding-right: 60px;
 }
