@@ -3,7 +3,7 @@
 /*
 |--------------------------------------------------------------------------
 | Application Routes
-|--------------------------------------------------------------------------
+|-------------------------------------------------------------------------- index
 |
 | Here is where you can register all of the routes for an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
@@ -30,4 +30,4 @@ Route::controller('index', 'IndexController');
 
 Route::get('dashboard', 'IndexController@getDashboard');
 Route::get('set', 'IndexController@getDashboard');
-Route::get('showfaucet', 'IndexController@getIfraimContent');
+Route::get('nextfaucet', 'IndexController@getNextFaucet');

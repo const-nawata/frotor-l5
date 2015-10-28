@@ -19,10 +19,15 @@ class IndexController extends Controller{
     }
 //______________________________________________________________________________
 
-    public function getIfraimContent(){
+    public function getNextFaucet(){
 
 
-    	return redirect('http://www.google.com');
+info("Point 1");
+
+//     	return Response::json(['url'=>'http://bitcoinzebra.com/faucet']);
+//     	return Response::json(['url'=>'5556']);
+
+    	return json_encode(['id'=>10,'url'=>'5556']);
 
     }
 

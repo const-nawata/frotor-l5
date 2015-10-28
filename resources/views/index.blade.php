@@ -3,7 +3,7 @@
 <div class="panel panel-info main-panel-content">
 	<div class="panel-heading index-heard">
 		<div class="btn-group" role="group" aria-label="...">
-			<button type="button" class="btn btn-default">Next</button>
+			<button onclick="getNextFaucet();" type="button" class="btn btn-default">Next</button>
 			<button type="button" class="btn btn-default">Load</button>
 			<button type="button" class="btn btn-default">Settins</button>
 		</div>
