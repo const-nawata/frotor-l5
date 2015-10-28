@@ -34,8 +34,3 @@
 
 </head>
 <body>
-
-<?php /* ?>
-<div>Header</div>
-<?php */
-?>
