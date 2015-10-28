@@ -11,10 +11,5 @@ class Faucet extends Model{
 // 		'name'
 	];
 
-	protected $jsFields	= [
-// 		'id'		=> 'integer',
-// 		'name'		=> 'varchar'
-	];
-
 
 }//	Class end
