@@ -48,3 +48,19 @@ div.index-heard p.faucet-id-p span.badge{
 	width: 1px;
 	padding-right: 60px;
 }
+
+.num-info-td{
+	/*width: 100%;*/
+	padding-left: 10px;
+	padding-right: 100px;
+	white-space: nowrap;
+}
+
+.last-payment{
+	font-family: arial;
+	padding-left: 140px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #e60073;
+	white-space: nowrap;
+}
