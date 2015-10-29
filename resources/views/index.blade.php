@@ -32,9 +32,10 @@
 
 		<td>
 			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-default btn-sm">Settins</button>
-				<button type="button" class="btn btn-default btn-sm" onclick="loadFaucet();">Load</button>
-				<button type="button" class="btn btn-default btn-sm" onclick="$('#faucetForm').submit();">Next</button>
+				<button type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs"></button>
+				<button type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></button>
+				<button type="button" class="btn btn-default glyphicon glyphicon-refresh" onclick="loadFaucet();" title="(re-)Load"></button>
+				<button type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="$('#faucetForm').submit();" title="Next"></button>
 			</div>
 		</td>
 
