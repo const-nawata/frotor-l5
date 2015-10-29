@@ -31,3 +31,4 @@ Route::controller('index', 'IndexController');
 Route::get('dashboard', 'IndexController@getDashboard');
 Route::get('set', 'IndexController@getDashboard');
 Route::get('nextfaucet', 'IndexController@getNextFaucet');
+Route::get('showdummy', 'IndexController@getDummyPage');

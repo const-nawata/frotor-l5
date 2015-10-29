@@ -15,8 +15,6 @@ div.panel button{
 	font-size: 14px;
 }
 
-
-
 div.index-heard{
 	padding-top: 3px;
 	padding-bottom: 3px;
@@ -28,7 +26,7 @@ div.index-heard{
 }
 .ifraim-panel{
 	padding: 0;
-	height: 95.88%;
+	height: 95.5%;
 }
 
 .faucet-id-p{
@@ -50,7 +48,6 @@ div.index-heard p.faucet-id-p span.badge{
 }
 
 .num-info-td{
-	/*width: 100%;*/
 	padding-left: 10px;
 	padding-right: 100px;
 	white-space: nowrap;
@@ -63,4 +60,12 @@ div.index-heard p.faucet-id-p span.badge{
 	font-weight: bold;
 	color: #e60073;
 	white-space: nowrap;
+}
+
+table.faucets-info-tbl td{
+	font-size: 11px;
+	padding: 0 5px;
+}
+table.faucets-info-tbl td.faucet-prompt-td{
+	font-size: 12px;
 }

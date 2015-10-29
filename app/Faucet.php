@@ -8,8 +8,20 @@ class Faucet extends Model{
 	protected $table = 'faucets';
 
 	protected $fillable = [
-// 		'name'
+		'duration',
+		'priority'
 	];
 
+	public static function firstReady(){
+
+		$row	= self::select()
+			->where('isactive',true)
+			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
+			->orderBy('priority', 'desc')
+			->first();
+
+		return $row;
+	}
+//______________________________________________________________________________
 
 }//	Class end

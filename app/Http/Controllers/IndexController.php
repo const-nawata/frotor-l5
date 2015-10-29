@@ -1,12 +1,17 @@
 <?php namespace App\Http\Controllers;
 
+use App\Faucet;
 
 class IndexController extends Controller{
-// class IndexController extends Controller{
 
-    public function getIndex(){
+    public function getIndex( $isDummy=TRUE ){
 
-    	return view( 'index' );
+    	$faucet	= Faucet::firstReady();
+
+    	$all	= Faucet::all()->count();
+    	$active	= Faucet::where('isactive',TRUE)->count();
+
+    	return view( 'index', ['faucet'=>$faucet, 'all'=>$all, 'active'=>$active] );
     }
 //______________________________________________________________________________
 
@@ -29,6 +34,14 @@ class IndexController extends Controller{
 
     	return json_encode(['id'=>10,'url'=>'5556']);
 
+    }
+
+    public function getDummyPage(){
+
+
+
+
+    	return view( 'dummy' );
     }
 
 }//	Class end
