@@ -1,18 +1,24 @@
 @extends('layouts.main')
 
-<?php //$tt='&nbsp;';
+<?php
+/*
+//$tt='&nbsp;';
 
 //	http://frotor-l5.btc/showdummy
 
 //		{{ url('/showdummy') }}
 
 //	http://rollingfaucet.com/
+
+*/
 ?>
 
 @section('content')
+
 <div class="panel panel-info main-panel-content">
 	<div class="panel-heading index-heard">
 
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 <table class="main-tbl">
 	<tr>

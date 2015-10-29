@@ -9,6 +9,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<meta name="_token" content="{!! csrf_token() !!}"/>
+
 	<!-- jQuery & jQuery UI -->
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript" charset="utf-8"></script>
 
@@ -32,6 +34,10 @@
 	<script type="text/javascript" src="/js/rotor.js"></script>
 
 @yield('headExtra')
+
+<script type="text/javascript">
+
+</script>
 
 </head>
 <body>
