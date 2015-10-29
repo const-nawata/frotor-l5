@@ -16,7 +16,7 @@
 
 <table class="main-tbl">
 	<tr>
-		<td><p class="faucet-id-p" style="float: right;">Id: <span class="badge">{!! $faucet->id !!}</span></p></td>
+		<td><p class="faucet-id-p" style="float: right;">Id: <span class="badge" id="id_faucet">{!! $faucet->id !!}</span></p></td>
 
 		<td id="act_after_td" class="input-control-td hided">Show after
 			<input type="text" id="cduraion" name="cduraion" class="time-inp" value="{!! $faucet->duration !!}" /> sec.
@@ -37,7 +37,7 @@
 		<td>
 			<div class="btn-group" role="group">
 				<button type="button" class="btn btn-default btn-sm">Settins</button>
-				<button type="button" class="btn btn-default btn-sm">Load</button>
+				<button type="button" class="btn btn-default btn-sm" onclick="loadFaucet({!! $faucet->id !!},'{!! $faucet->url !!}');">Load</button>
 				<button type="button" class="btn btn-default btn-sm" onclick="getNextFaucet();">Next</button>
 			</div>
 		</td>

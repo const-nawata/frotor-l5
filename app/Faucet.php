@@ -20,6 +20,8 @@ class Faucet extends Model{
 			->orderBy('priority', 'desc')
 			->first();
 
+		$row->url	= $row->url.($row->referal!=''?'?r='.$row->referal:'');
+
 		return $row;
 	}
 //______________________________________________________________________________
