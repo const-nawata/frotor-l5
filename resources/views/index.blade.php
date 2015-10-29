@@ -1,24 +1,14 @@
 @extends('layouts.main')
 
-<?php
-/*
-//$tt='&nbsp;';
-
-//	http://frotor-l5.btc/showdummy
-
-//		{{ url('/showdummy') }}
-
-//	http://rollingfaucet.com/
-
-*/
-?>
 
 @section('content')
 
+{!! Form::open(['url'=>'/nextfaucet','method'=>'post', 'role'=>'form','id'=>'faucetForm','name'=>'faucetForm']) !!}
+{!! Form::close() !!}
+
+
 <div class="panel panel-info main-panel-content">
 	<div class="panel-heading index-heard">
-
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 <table class="main-tbl">
 	<tr>
@@ -43,8 +33,8 @@
 		<td>
 			<div class="btn-group" role="group">
 				<button type="button" class="btn btn-default btn-sm">Settins</button>
-				<button type="button" class="btn btn-default btn-sm" onclick="loadFaucet({!! $faucet->id !!},'{!! $faucet->url !!}');">Load</button>
-				<button type="button" class="btn btn-default btn-sm" onclick="getNextFaucet();">Next</button>
+				<button type="button" class="btn btn-default btn-sm" onclick="loadFaucet();">Load</button>
+				<button type="button" class="btn btn-default btn-sm" onclick="$('#faucetForm').submit();">Next</button>
 			</div>
 		</td>
 
@@ -60,4 +50,22 @@
 
 
 </div>
+@stop
+
+@section('js_extra')
+<script type="text/javascript">
+
+$(document).ready(function(){
+	faucet_id = {!! $faucet->id !!};
+	faucet_url = "{!! $faucet->url !!}";
+
+	$("#faucetForm").on('submit', function(event){
+		event.preventDefault();
+		getNextFaucet($(this).attr('action'));
+        return false;
+	});
+
+});
+</script>
+
 @stop

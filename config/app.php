@@ -13,6 +13,7 @@ return [
 	|
 	*/
 
+// 	'debug' => env('APP_DEBUG'),
 	'debug' => env('APP_DEBUG'),
 
 	/*
@@ -26,7 +27,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://frotor-l5.btc',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +40,8 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+// 	'timezone' => 'UTC',
+	'timezone' => 'Europe/Helsinki',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +80,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'SummerLynGlau'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -135,6 +137,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -192,6 +195,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+
+		'Form'      => 'Illuminate\Html\FormFacade',
+		'Html'      => 'Illuminate\Html\HtmlFacade'
 
 	],
 

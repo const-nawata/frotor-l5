@@ -28,70 +28,23 @@ class IndexController extends Controller{
     }
 //______________________________________________________________________________
 
-    public function getNextFaucet( NextFaucetRequest $request){
-
-    	$data	= $request->all();
-
-info("\nGet: ");
-// info(print_r( $data, TRUE ));
-
-
-
-// info("\ndummy: ");
-
-//     	$data	= ['no'];
-
-//     if(Request::ajax()) {
-
-// info("\nAjax!!\n");
-
-//       $data = Input::all();
-// //       print_r($data);die;
-//     }
-
-// info(print_r( $request, TRUE ));
-// info(print_r( $_POST, TRUE ));
-// info(print_r( $_GET, TRUE ));
-
-//     	return Response::json(['url'=>'http://bitcoinzebra.com/faucet']);
-//     	return Response::json(['url'=>'5556']);
-
-//     	return json_encode(['id'=>10,'url'=>'5556']);
-    	return Response::json(['id'=>10,'url'=>'5556']);
-
-    }
-
     public function postNextFaucet( NextFaucetRequest $request){
 
     	$data	= $request->all();
 
 
-// info(print_r( $data, TRUE ));
+// info(print_r( $data, 1 ));
 
 
+		$faucet	= Faucet::firstReady();
 
-info("\nPost: ");
+    	return Response::json([
+    		'id'		=> $faucet->id,
+    		'url'		=> $faucet->url,
+    		'duration'	=> $faucet->duration,
+    		'priority'	=> $faucet->priority
 
-//     	$data	= ['no'];
-
-//     if(Request::ajax()) {
-
-// info("\nAjax!!\n");
-
-//       $data = Input::all();
-// //       print_r($data);die;
-//     }
-
-// info(print_r( $request, TRUE ));
-// info(print_r( $_POST, TRUE ));
-// info(print_r( $_GET, TRUE ));
-
-//     	return Response::json(['url'=>'http://bitcoinzebra.com/faucet']);
-//     	return Response::json(['url'=>'5556']);
-
-//     	return json_encode(['id'=>10,'url'=>'5556']);
-    	return Response::json(['id'=>10,'url'=>'5556']);
-
+    	]);
     }
 //-----------------------------------------------------------------------------1
 
