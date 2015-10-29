@@ -32,8 +32,11 @@ class IndexController extends Controller{
 
     	$data	= $request->all();
 
+// info(print_r( $data  ,true));
 
-// info(print_r( $data, 1 ));
+
+    	Faucet::updateUntil( $data['prev_faucet_id'], $data['cduratin'], $data['priority'], ($data['cduratin']==$data['oduratin']) );
+// info("dt: ");
 
 
 		$faucet	= Faucet::firstReady();
@@ -46,7 +49,7 @@ class IndexController extends Controller{
 
     	]);
     }
-//-----------------------------------------------------------------------------1
+//-----------------------------------------------------------------------------
 
     public function getDummyPage(){
 

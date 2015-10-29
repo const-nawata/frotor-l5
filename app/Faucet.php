@@ -9,8 +9,11 @@ class Faucet extends Model{
 
 	protected $fillable = [
 		'duration',
-		'priority'
+		'priority',
+		'updated'
 	];
+
+	public $timestamps  = false;
 
 	public static function firstReady(){
 
@@ -23,6 +26,19 @@ class Faucet extends Model{
 		$row->url	= $row->url.($row->referal!=''?'?r='.$row->referal:'');
 
 		return $row;
+	}
+//______________________________________________________________________________
+
+	public static function updateUntil( $id, $duration, $priority, $isUpdated=TRUE ){
+		$data_new	= [
+			'until'	=> date('Y-m-d H:i:s', strtotime('+'.$duration.' second')),
+			'priority'	=> $priority
+		];
+
+		$isUpdated ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
+
+		$faucet	= self::where( 'id', $id )->update( $data_new );
+
 	}
 //______________________________________________________________________________
 
