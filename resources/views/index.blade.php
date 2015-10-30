@@ -3,7 +3,7 @@
 
 @section('content')
 
-{!! Form::open(['url'=>'/nextfaucet','method'=>'post', 'role'=>'form','id'=>'faucetForm','name'=>'faucetForm']) !!}
+{!! Form::open(['url'=>'/faucetation','method'=>'post', 'role'=>'form','id'=>'faucetForm','name'=>'faucetForm']) !!}
 {!! Form::close() !!}
 
 
@@ -32,10 +32,10 @@
 
 		<td>
 			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs"></button>
-				<button type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></button>
-				<button type="button" class="btn btn-default glyphicon glyphicon-refresh" onclick="loadFaucet();" title="(re-)Load"></button>
-				<button type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="$('#faucetForm').submit();" title="Next"></button>
+				<button id="settings_btn" type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs"></button>
+				<button id="disable_btn" type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></button>
+				<button id="load_btn" type="button" class="btn btn-default glyphicon glyphicon-refresh" title="(re-)Load"></button>
+				<button id="next_btn" type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="" title="Next"></button>
 			</div>
 		</td>
 
@@ -57,13 +57,35 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+	var btn_id;
+
 	faucet_id = {!! $faucet->id !!};
 	faucet_url = "{!! $faucet->url !!}";
 
-	$("#faucetForm").on('submit', function(event){
+	$("button").click(function(ev){
+		btn_id	= $(this).attr("id");
+
+		switch( btn_id ){
+			case "next_btn":
+			case "disable_btn":
+				$('#faucetForm').submit();
+				break;
+
+			case "load_btn":
+				loadFaucet();
+				break;
+
+			case "settings_btn":
+				break;
+
+			default:
+		}
+	});
+
+	$('#faucetForm').submit(function(event){
 		event.preventDefault();
-		getNextFaucet($(this).attr('action'));
-        return false;
+		postFaucet($(this).attr('action'),btn_id);
+		return false;
 	});
 
 });

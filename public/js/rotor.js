@@ -5,18 +5,27 @@
 var faucet_id=0
 	,faucet_url=""
 ;
-//$.ajaxSetup({
-//	   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-//	});
 
-function getNextFaucet(fUrl){
+function postFaucet(fUrl,btnId){
+	var action;
+
+	switch( btnId ){
+		case "next_btn":
+			action	= "next";
+			break;
+
+		case "disable_btn":
+			action	= "disable";
+			break;
+	}
 
 	$.ajax({
 		method:"POST",
 		dataType: "JSON",
 		url: fUrl,
 		data:{
-			"prev_faucet_id":faucet_id
+			"action":action
+			,"prev_faucet_id":faucet_id
 			,"cduratin":$("#cduraion").val()
 			,"oduratin":$("#oduraion").val()
 			,"priority":$("#priority").val()
@@ -24,10 +33,11 @@ function getNextFaucet(fUrl){
 
 		success: function(faucet){
 
+			if( action == "disable" )
+				alert("Faucet disabled.");
+
 			faucet_id	= faucet.id;
 			faucet_url	= faucet.url;
-
-//alert("Success!!! "+faucet_id);
 
 			$("#id_faucet").html(faucet_id);
 			$("#cduraion").val(faucet.duration);
@@ -42,9 +52,10 @@ function getNextFaucet(fUrl){
 			alert("Internal Error while go to next faucet.");
 		}
     });
-
 }
+//______________________________________________________________________________
 
 function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
 }
+//______________________________________________________________________________

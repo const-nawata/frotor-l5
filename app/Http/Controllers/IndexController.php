@@ -4,7 +4,7 @@ use App\Faucet;
 use Input;
 use Request;
 use Response;
-use App\Http\Requests\NextFaucetRequest;
+use App\Http\Requests\ActionFaucetRequest;
 
 class IndexController extends Controller{
 
@@ -19,25 +19,24 @@ class IndexController extends Controller{
     }
 //______________________________________________________________________________
 
-
     public function getDashboard(){
-
-
-
     	return view( 'dashboard' );
     }
 //______________________________________________________________________________
 
-    public function postNextFaucet( NextFaucetRequest $request){
+    public function postActionFaucet( ActionFaucetRequest $request ){
 
     	$data	= $request->all();
 
-// info(print_r( $data  ,true));
+		switch( $data['action'] ){
+			case 'next':
+				Faucet::updateUntil( $data['prev_faucet_id'], $data['cduratin'], $data['priority'], ($data['cduratin']==$data['oduratin']) );
+				break;
 
-
-    	Faucet::updateUntil( $data['prev_faucet_id'], $data['cduratin'], $data['priority'], ($data['cduratin']==$data['oduratin']) );
-// info("dt: ");
-
+			case 'disable':
+				Faucet::disableFaucet( $data['prev_faucet_id'] );
+				break;
+		}
 
 		$faucet	= Faucet::firstReady();
 
@@ -46,17 +45,13 @@ class IndexController extends Controller{
     		'url'		=> $faucet->url,
     		'duration'	=> $faucet->duration,
     		'priority'	=> $faucet->priority
-
     	]);
     }
-//-----------------------------------------------------------------------------
+//______________________________________________________________________________
 
     public function getDummyPage(){
-
-
-
-
     	return view( 'dummy' );
     }
+//______________________________________________________________________________
 
 }//	Class end

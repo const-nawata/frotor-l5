@@ -3,7 +3,7 @@
 use App\Http\Requests\Request;
 use Response;
 
-class NextFaucetRequest extends Request {
+class ActionFaucetRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
