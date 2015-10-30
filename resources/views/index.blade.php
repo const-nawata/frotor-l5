@@ -32,10 +32,10 @@
 
 		<td>
 			<div class="btn-group" role="group">
-				<button id="settings_btn" type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs"></button>
-				<button id="disable_btn" type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></button>
-				<button id="load_btn" type="button" class="btn btn-default glyphicon glyphicon-refresh" title="(re-)Load"></button>
-				<button id="next_btn" type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="" title="Next"></button>
+				<a id="settings_btn" type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs"href="/set"></a>
+				<div id="disable_btn" type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></div>
+				<div id="load_btn" type="button" class="btn btn-default glyphicon glyphicon-refresh" title="(re-)Load"></div>
+				<div id="next_btn" type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="" title="Next"></div>
 			</div>
 		</td>
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
 	faucet_id = {!! $faucet->id !!};
 	faucet_url = "{!! $faucet->url !!}";
 
-	$("button").click(function(ev){
+	$("div.btn").click(function(ev){
 		btn_id	= $(this).attr("id");
 
 		switch( btn_id ){

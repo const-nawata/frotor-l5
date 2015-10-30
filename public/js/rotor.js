@@ -59,3 +59,23 @@ function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
 }
 //______________________________________________________________________________
+
+function postDashboardData(fUrl){
+	$.ajax({
+		method:"POST",
+		dataType: "JSON",
+		url: fUrl,
+		data:{
+			"dummy":111
+		},
+
+		success: function(data){
+
+    	},
+
+    	error: function(){
+			alert("Internal Error while save settints data.");
+		}
+    });
+	
+}

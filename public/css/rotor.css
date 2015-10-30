@@ -69,3 +69,10 @@ table.faucets-info-tbl td{
 table.faucets-info-tbl td.faucet-prompt-td{
 	font-size: 12px;
 }
+
+
+
+label.wait-time{
+	white-space: nowrap;
+	padding-right: 5px;
+}

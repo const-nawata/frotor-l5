@@ -32,5 +32,6 @@ Route::get('dashboard', 'IndexController@getDashboard');
 Route::get('set', 'IndexController@getDashboard');
 // Route::get('nextfaucet', 'IndexController@getNextFaucet');
 Route::post('faucetation', 'IndexController@postActionFaucet');
+Route::post('save', 'IndexController@postSaveFaucet');
 
 Route::get('showdummy', 'IndexController@getDummyPage');

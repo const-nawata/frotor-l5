@@ -5,6 +5,7 @@ use Input;
 use Request;
 use Response;
 use App\Http\Requests\ActionFaucetRequest;
+use App\Http\Requests\SaveFaucetRequest;
 
 class IndexController extends Controller{
 
@@ -51,6 +52,16 @@ class IndexController extends Controller{
 
     public function getDummyPage(){
     	return view( 'dummy' );
+    }
+//______________________________________________________________________________
+
+    public function postSaveFaucet( SaveFaucetRequest $request ){
+    	$data	= $request->all();
+
+
+// info(print_r(  $data ,true));
+
+    	return Response::json([]);
     }
 //______________________________________________________________________________
 
