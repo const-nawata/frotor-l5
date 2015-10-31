@@ -80,7 +80,7 @@ class IndexController extends Controller{
     	$data	= $request->all();
 
 
-// info(print_r(  $data ,true));
+info(print_r(  $data ,true));
 
     	return Response::json([]);
     }

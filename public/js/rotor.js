@@ -58,7 +58,7 @@ function postFaucet(fUrl,btnId){
 function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
 }
-//______________________________________________________________________________
+//______________________________________________________________________________ 
 
 function postDashboardData(fUrl){
 	$.ajax({
@@ -66,7 +66,10 @@ function postDashboardData(fUrl){
 		dataType: "JSON",
 		url: fUrl,
 		data:{
-			"dummy":111
+			"id":faucet_id,
+			"url":$("#url").val(),
+			"info":$("#info").val(),
+			"duration":$("#duration").val()
 		},
 
 		success: function(data){

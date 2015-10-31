@@ -25,6 +25,18 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
+				<label for="url" class="col-sm-4 control-label">Url</label>
+				<div class="col-sm-8">
+					{!! Form::text('url', $faucet->url, ['class'=>'form-control','id'=>'url','placeholder'=>'Url']) !!}
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="form-group">
 				<label for="info" class="col-sm-4 control-label">Description</label>
 				<div class="col-sm-8">
 					{!! Form::text('info', $faucet->info, ['class'=>'form-control','id'=>'info','placeholder'=>'Description']) !!}
@@ -68,6 +80,8 @@
 @section('js_extra')
 <script type="text/javascript">
 $(document).ready(function(){
+
+	faucet_id = {!! $faucet->id !!};
 
 	$("#faucet_id").change(function(event){
 		alert("id: "+$(this).val());
