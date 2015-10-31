@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Faucet;
-use Input;
-use Request;
+// use Input;
+// use Request;
 use Response;
 use App\Http\Requests\ActionFaucetRequest;
 use App\Http\Requests\SaveFaucetRequest;
@@ -20,8 +20,29 @@ class IndexController extends Controller{
     }
 //______________________________________________________________________________
 
-    public function getDashboard(){
-    	return view( 'dashboard' );
+    public function getDashboard( $id ){
+
+		$faucet	= Faucet::find($id);
+
+
+// 		$faucets_list	= [];
+// 		$faucet_sel	= NULL;
+// 		foreach( $faucets as $faucet ){
+// 			$faucets_boxlist[$faucet->id]	= '['.$faucet->id.'] '.$faucet->name;
+// 			$faucet_sel	= $faucet->id == $id ? $faucet : $faucet_sel;
+
+
+
+// 			if( $faucet->id == $id ){
+// 				$name = $faucet->name;
+
+// 			}
+// 		}
+
+    	return view( 'dashboard',[
+    		'faucet'		=> $faucet,
+
+    	] );
     }
 //______________________________________________________________________________
 

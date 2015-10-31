@@ -29,7 +29,7 @@ Route::get('/', [
 Route::controller('index', 'IndexController');
 
 Route::get('dashboard', 'IndexController@getDashboard');
-Route::get('set', 'IndexController@getDashboard');
+Route::get('set/{faucetId}', 'IndexController@getDashboard');
 // Route::get('nextfaucet', 'IndexController@getNextFaucet');
 Route::post('faucetation', 'IndexController@postActionFaucet');
 Route::post('save', 'IndexController@postSaveFaucet');

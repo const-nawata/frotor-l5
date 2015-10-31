@@ -70,9 +70,14 @@ table.faucets-info-tbl td.faucet-prompt-td{
 	font-size: 12px;
 }
 
-
-
-label.wait-time{
+div.dasboard-frotor label.control-label{
 	white-space: nowrap;
-	padding-right: 5px;
+}
+
+.id-dasboard-frotor-div{
+	margin-top: 6px;
+	font-size: 18px;
+}
+.id-dasboard-frotor-label{
+	font-size: 18px;
 }

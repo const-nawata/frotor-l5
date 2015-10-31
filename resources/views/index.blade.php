@@ -32,7 +32,7 @@
 
 		<td>
 			<div class="btn-group" role="group">
-				<a id="settings_btn" type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs"href="/set"></a>
+				<a id="settings_btn" type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs" href="/set/{!! $faucet->id !!}"></a>
 				<div id="disable_btn" type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></div>
 				<div id="load_btn" type="button" class="btn btn-default glyphicon glyphicon-refresh" title="(re-)Load"></div>
 				<div id="next_btn" type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="" title="Next"></div>
