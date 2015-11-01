@@ -8,7 +8,12 @@ class Faucet extends Model{
 	protected $table = 'faucets';
 
 	protected $fillable = [
+		'url',
+		'info',
+		'referal',
 		'duration',
+		'until',
+		'isactive',
 		'priority',
 		'updated'
 	];
@@ -37,7 +42,7 @@ class Faucet extends Model{
 
 		$isUpdated ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
 
-		$faucet	= self::where( 'id', $id )->update( $data_new );
+		$result	= self::where( 'id', $id )->update( $data_new );
 
 	}
 //______________________________________________________________________________

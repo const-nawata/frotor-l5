@@ -82,7 +82,7 @@ function postDashboardData(fUrl){
 		},
 
 		success: function(data){
-
+			alert(data.message);
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
@@ -95,8 +95,6 @@ function postDashboardData(fUrl){
     		}
 
     		$("#"+field_id).focus();
-
-//			alert("Internal Error while save settints data 1.");
 		}
     });
 

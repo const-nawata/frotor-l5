@@ -79,10 +79,19 @@ class IndexController extends Controller{
     public function postSaveFaucet( SaveFaucetRequest $request ){
     	$data	= $request->all();
 
+    	$id	= $data['id'];
+    	unset($data['id']);
 
-// info(print_r(  $data ,true));
+    	try{
+	    	if( (bool)$id){
+	    		$result	= Faucet::where( 'id', $id )->update( $data );
+	    	}else{
+	    	}
+    	}catch( \Exception $e){
+    		return Response::json(['message'=>$e->getMessage()]);
+    	}
 
-    	return Response::json([]);
+    	return Response::json(['message'=>'Successfully saved.']);
     }
 //______________________________________________________________________________
 

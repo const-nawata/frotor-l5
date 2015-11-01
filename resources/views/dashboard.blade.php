@@ -102,7 +102,14 @@ $(document).ready(function(){
 	faucet_id = {!! $faucet->id !!};
 
 	$("#btn_add").click(function(event){
-		alert("id: "+$(this).attr("id"));
+		faucet_id = 0;
+
+		$("#url").val("");
+		$("#info").val("");
+		$("#referal").val("");
+		$("#duration").val(0);
+		$("#faucet_id").html("New faucet");
+		$("#url").focus();
 	});
 
 	$('#dashboardForm').submit(function(event){
