@@ -48,8 +48,16 @@ function postFaucet(fUrl,btnId){
 			loadFaucet();
     	},
 
-    	error: function(){
-			alert("Internal Error while go to next faucet.");
+    	error: function(jqXHR, textStatus, errorThrown){
+
+    		var err = jqXHR.responseJSON;
+
+    		for(var field_id in err ){
+    			alert(err[field_id][0]);
+    			break;
+    		}
+
+
 		}
     });
 }
@@ -58,7 +66,7 @@ function postFaucet(fUrl,btnId){
 function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
 }
-//______________________________________________________________________________ 
+//______________________________________________________________________________
 
 function postDashboardData(fUrl){
 	$.ajax({
@@ -69,16 +77,27 @@ function postDashboardData(fUrl){
 			"id":faucet_id,
 			"url":$("#url").val(),
 			"info":$("#info").val(),
-			"duration":$("#duration").val()
+			"duration":$("#duration").val(),
+			"referal":$("#referal").val()
 		},
 
 		success: function(data){
 
     	},
 
-    	error: function(){
-			alert("Internal Error while save settints data.");
+    	error: function(jqXHR, textStatus, errorThrown){
+
+    		var err = jqXHR.responseJSON;
+
+    		for(var field_id in err ){
+    			alert(err[field_id][0]);
+    			break;
+    		}
+
+    		$("#"+field_id).focus();
+
+//			alert("Internal Error while save settints data 1.");
 		}
     });
-	
+
 }

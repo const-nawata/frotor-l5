@@ -20,7 +20,9 @@ class SaveFaucetRequest extends Request {
 	 * @return array
 	 */
 	public function rules(){
-		return [];
+		return [
+			'url'	=> 'required',
+		];
 	}
 
     // OPTIONAL OVERRIDE

@@ -13,8 +13,14 @@
 			<div class="form-group">
 
 				<label for="faucet_id" class="col-sm-4 control-label id-dasboard-frotor-label">Id </label>
-				<div class="col-sm-8">
+				<div class="col-sm-6">
 					<div id="faucet_id" class="badge id-dasboard-frotor-div">{!! $faucet->id !!}</div>
+				</div>
+				<div class="col-sm-2 tools-btn">
+					<div class="btn-group btn-group-xs pull-right" role="group">
+						<a id="btn_add" class="btn btn-default glyphicon glyphicon-plus-sign" title="Add faucet"></a>
+						<a id="btn_del" class="btn btn-default glyphicon glyphicon-trash" title="Delete faucet"></a>
+					</div>
 				</div>
 
 			</div>
@@ -63,6 +69,18 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
+				<label for="info" class="col-sm-4 control-label">Referal address</label>
+				<div class="col-sm-8">
+					{!! Form::text('referal', $faucet->referal, ['class'=>'form-control','id'=>'referal','placeholder'=>'Referal address']) !!}
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 
 					{!! Form::submit( 'Save', ['class'=>'btn btn-default pull-right']) !!}
@@ -83,8 +101,8 @@ $(document).ready(function(){
 
 	faucet_id = {!! $faucet->id !!};
 
-	$("#faucet_id").change(function(event){
-		alert("id: "+$(this).val());
+	$("#btn_add").click(function(event){
+		alert("id: "+$(this).attr("id"));
 	});
 
 	$('#dashboardForm').submit(function(event){
