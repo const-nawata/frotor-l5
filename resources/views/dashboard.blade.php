@@ -83,7 +83,11 @@
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 
-					{!! Form::submit( 'Save', ['class'=>'btn btn-default pull-right']) !!}
+
+					<div class="btn-group pull-right" role="group">
+						{!! Html::link('/','Home',['class'=>'btn btn-default']) !!}
+						{!! Form::submit( 'Save', ['class'=>'btn btn-default']) !!}
+					</div>
 
 				</div>
 			</div>
