@@ -12,7 +12,7 @@
 
 <table class="main-tbl">
 	<tr>
-		<td><p class="faucet-id-p" style="float: right;">Id: <span class="badge" id="id_faucet">{!! $faucet->id !!}</span></p></td>
+		<td><p class="faucet-id-p" style="float: right;">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</span></p></td>
 
 		<td id="act_after_td" class="input-control-td hided">Show after
 			<input type="text" id="cduraion" name="cduraion" class="time-inp" value="{!! $faucet->duration !!}" /> sec.

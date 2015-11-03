@@ -39,7 +39,7 @@ function postFaucet(fUrl,btnId){
 			faucet_id	= faucet.id;
 			faucet_url	= faucet.url;
 
-			$("#id_faucet").html(faucet_id);
+			$("#faucet_id").html(faucet_id);
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
 			$("#priority").val(faucet.priority);
@@ -56,8 +56,6 @@ function postFaucet(fUrl,btnId){
     			alert(err[field_id][0]);
     			break;
     		}
-
-
 		}
     });
 }
@@ -82,6 +80,8 @@ function postDashboardData(fUrl){
 		},
 
 		success: function(data){
+			faucet_id	= data.id;
+			$("#faucet_id").html(faucet_id);
 			alert(data.message);
     	},
 

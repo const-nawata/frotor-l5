@@ -86,12 +86,14 @@ class IndexController extends Controller{
 	    	if( (bool)$id){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
 	    	}else{
+				$data['isactive']	= TRUE;
+				$id	= Faucet::insertGetId($data);
 	    	}
     	}catch( \Exception $e){
     		return Response::json(['message'=>$e->getMessage()]);
     	}
 
-    	return Response::json(['message'=>'Successfully saved.']);
+    	return Response::json( ['message'=>'Successfully saved.', 'id' => $id] );
     }
 //______________________________________________________________________________
 
