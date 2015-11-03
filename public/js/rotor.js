@@ -80,22 +80,84 @@ function postDashboardData(fUrl){
 		},
 
 		success: function(data){
+			if(faucet_id < 0){
+				alert(data.message);
+				window.location = "/";
+			}
+
 			faucet_id	= data.id;
 			$("#faucet_id").html(faucet_id);
-			alert(data.message);
+			inform( "Operation result", data.message, focusId );
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
-
     		var err = jqXHR.responseJSON;
 
     		for(var field_id in err ){
-    			alert(err[field_id][0]);
+    			inform( "Error", "<span class='glyphicon glyphicon-exclamation-sign' style='float:left; margin:0 15px 0 0;font-size:20px;'></span>"+err[field_id][0], field_id );
     			break;
     		}
-
-    		$("#"+field_id).focus();
 		}
     });
-
 }
+//------------------------------------------------------------------------------
+
+/**
+ * extends alert functionality. Also sets global is_submit to false.
+ * @param string title
+ * @param string message
+ * @returns void
+ */
+function inform( title, message, focusId ){
+
+	std_dlg
+		.dialog( "option", "width", "400px" )
+	    .dialog( "option", "title", title )
+		.dialog( "option", "buttons",[
+			{
+				text: "Close",
+				click: function(){
+					$(this).dialog("close");
+
+					if(focusId)
+						$("#"+focusId).focus();
+				}
+			}
+		])
+		.html( message )
+		.dialog("open");
+}
+//------------------------------------------------------------------------------
+
+/**
+ * extends confirm functionality.
+ * @param title
+ * @param message
+ * @param callback
+ */
+function affirm( title, message, callback ){
+	std_dlg
+		.dialog( "option", "width", "450px" )
+	    .dialog( "option", "title", title )
+		.dialog( "option", "buttons",[
+			{
+				text: "Yes",
+				click: function(){
+					$(this).dialog("close");
+
+					if(typeof callback != "undefined")
+						callback();
+				}
+			},
+
+			{
+				text: "No",
+				click: function(){
+					$(this).dialog("close");
+				}
+			}
+		])
+		.html( message )
+		.dialog("open");
+}
+//------------------------------------------------------------------------------

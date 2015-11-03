@@ -16,8 +16,8 @@
 				</div>
 				<div class="col-sm-2 tools-btn">
 					<div class="btn-group btn-group-xs pull-right" role="group">
-						<a id="btn_add" class="btn btn-default glyphicon glyphicon-plus-sign" title="Add faucet"></a>
-						<a id="btn_del" class="btn btn-default glyphicon glyphicon-trash" title="Delete faucet"></a>
+						{!! Form::button('',['id'=>'btn_add','class'=>'btn btn-default glyphicon glyphicon-plus-sign','title'=>'Add faucet']) !!}
+						{!! Form::button('',['id'=>'btn_del','class'=>'btn btn-default glyphicon glyphicon-trash','title'=>'Delete faucet']) !!}
 					</div>
 				</div>
 
@@ -90,6 +90,7 @@
 
 {!! Form::close() !!}
 </div>
+
 @stop
 
 @section('js_extra')
@@ -114,6 +115,16 @@ $(document).ready(function(){
 		postDashboardData($(this).attr('action'));
 		return false;
 	});
+
+	$("#btn_del").click(function(event){
+
+		affirm( "Confirmation required", "Are you sure you want to delete this faucet?", function(){
+			faucet_id = -faucet_id;
+			$('#dashboardForm').submit();
+		});
+
+	});
+
 });
 </script>
 @stop

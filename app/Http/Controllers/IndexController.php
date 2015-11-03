@@ -68,17 +68,23 @@ class IndexController extends Controller{
     	unset($data['id']);
 
     	try{
-	    	if( (bool)$id){
+	    	if( $id > 0 ){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
+				return Response::json( ['message'=>'Successfully saved.', 'id' => $id] );
+	    	}elseif($id < 0){//	Delete faucet!!!
+	    		$id	= -$id;
+				$result	= Faucet::where( 'id', $id )->delete();
+				return Response::json( ['message'=>'Successfully deleted.', 'id' => $id] );
 	    	}else{
 				$data['isactive']	= TRUE;
 				$id	= Faucet::insertGetId($data);
+				return Response::json( ['message'=>'Successfully created.', 'id' => $id] );
 	    	}
     	}catch( \Exception $e){
     		return Response::json(['message'=>$e->getMessage()]);
     	}
 
-    	return Response::json( ['message'=>'Successfully saved.', 'id' => $id] );
+
     }
 //______________________________________________________________________________
 
