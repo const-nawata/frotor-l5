@@ -6,6 +6,66 @@ var faucet_id=0
 	,faucet_url=""
 ;
 
+/**
+ * extends alert functionality. Also sets global is_submit to false.
+ * @param string title
+ * @param string message
+ * @returns void
+ */
+function inform( title, message, focusId ){
+
+	std_dlg
+		.dialog( "option", "width", "400px" )
+	    .dialog( "option", "title", title )
+		.dialog( "option", "buttons",[
+			{
+				text: "Close",
+				click: function(){
+					$(this).dialog("close");
+
+					if(typeof focusId != "undefined")
+						$("#"+focusId).focus();
+				}
+			}
+		])
+		.html( message )
+		.dialog("open");
+}
+//------------------------------------------------------------------------------
+
+/**
+ * extends confirm functionality.
+ * @param title
+ * @param message
+ * @param callback
+ */
+function affirm( title, message, callback ){
+	std_dlg
+		.dialog( "option", "width", "450px" )
+	    .dialog( "option", "title", title )
+		.dialog( "option", "buttons",[
+			{
+				text: "Yes",
+				click: function(){
+					$(this).dialog("close");
+
+					if(typeof callback != "undefined")
+						callback();
+				}
+			},
+
+			{
+				text: "No",
+				click: function(){
+					$(this).dialog("close");
+				}
+			}
+		])
+		.html( message )
+		.dialog("open");
+}
+//------------------------------------------------------------------------------
+
 function postFaucet(fUrl,btnId){
 	var action;
 
@@ -87,7 +147,7 @@ function postDashboardData(fUrl){
 
 			faucet_id	= data.id;
 			$("#faucet_id").html(faucet_id);
-			inform( "Operation result", data.message, focusId );
+			inform( "Operation result", data.message, faucet_id );
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
@@ -99,65 +159,5 @@ function postDashboardData(fUrl){
     		}
 		}
     });
-}
-//------------------------------------------------------------------------------
-
-/**
- * extends alert functionality. Also sets global is_submit to false.
- * @param string title
- * @param string message
- * @returns void
- */
-function inform( title, message, focusId ){
-
-	std_dlg
-		.dialog( "option", "width", "400px" )
-	    .dialog( "option", "title", title )
-		.dialog( "option", "buttons",[
-			{
-				text: "Close",
-				click: function(){
-					$(this).dialog("close");
-
-					if(focusId)
-						$("#"+focusId).focus();
-				}
-			}
-		])
-		.html( message )
-		.dialog("open");
-}
-//------------------------------------------------------------------------------
-
-/**
- * extends confirm functionality.
- * @param title
- * @param message
- * @param callback
- */
-function affirm( title, message, callback ){
-	std_dlg
-		.dialog( "option", "width", "450px" )
-	    .dialog( "option", "title", title )
-		.dialog( "option", "buttons",[
-			{
-				text: "Yes",
-				click: function(){
-					$(this).dialog("close");
-
-					if(typeof callback != "undefined")
-						callback();
-				}
-			},
-
-			{
-				text: "No",
-				click: function(){
-					$(this).dialog("close");
-				}
-			}
-		])
-		.html( message )
-		.dialog("open");
 }
 //------------------------------------------------------------------------------

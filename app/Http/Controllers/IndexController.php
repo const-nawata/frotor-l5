@@ -83,8 +83,6 @@ class IndexController extends Controller{
     	}catch( \Exception $e){
     		return Response::json(['message'=>$e->getMessage()]);
     	}
-
-
     }
 //______________________________________________________________________________
 
