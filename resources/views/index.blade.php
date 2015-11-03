@@ -12,15 +12,15 @@
 
 <table class="main-tbl">
 	<tr>
-		<td><p class="faucet-id-p" style="float: right;">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</span></p></td>
+		<td><p class="faucet-id-p pull-right">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</span></p></td>
 
 		<td id="act_after_td" class="input-control-td hided">Show after
-			<input type="text" id="cduraion" name="cduraion" class="time-inp" value="{!! $faucet->duration !!}" /> sec.
-			<input type="hidden" id="oduraion" name="oduraion" value="{!! $faucet->duration !!}" />
+			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'time-inp']) !!} sec.
+			{!! Form::hidden('oduraion',$faucet->duration,['id'=>'oduraion']) !!}
 		</td>
 
 		<td id="priority_td" class="input-control-td">Priority&nbsp;
-			<input type="text" id="priority" name="priority" class="time-inp" value="{!! $faucet->priority !!}" />
+			{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'time-inp']) !!}
 		</td>
 
 		<td class="num-info-td">
@@ -32,10 +32,10 @@
 
 		<td>
 			<div class="btn-group" role="group">
-				<a id="settings_btn" type="button" class="btn btn-default glyphicon glyphicon-cog" title="Settigs" href="/set/{!! $faucet->id !!}"></a>
-				<div id="disable_btn" type="button" class="btn btn-default glyphicon glyphicon glyphicon-remove" title="Disable"></div>
-				<div id="load_btn" type="button" class="btn btn-default glyphicon glyphicon-refresh" title="(re-)Load"></div>
-				<div id="next_btn" type="button" class="btn btn-default glyphicon glyphicon-forward" onclick="" title="Next"></div>
+				{!! Html::link('/set/'.$faucet->id,'',['class'=>'btn btn-default glyphicon glyphicon-cog']) !!}
+				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-remove','title'=>'Disable']) !!}
+				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-refresh','title'=>'(re-)Load']) !!}
+				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next']) !!}
 			</div>
 		</td>
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
 	faucet_id = {!! $faucet->id !!};
 	faucet_url = "{!! $faucet->url !!}";
 
-	$("div.btn").click(function(ev){
+	$("button").click(function(ev){
 		btn_id	= $(this).attr("id");
 
 		switch( btn_id ){

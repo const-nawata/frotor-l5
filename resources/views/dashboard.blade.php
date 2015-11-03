@@ -1,11 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="jumbotron">
-</div>
+<div class="jumbotron"></div>
 
 <div class="container dasboard-frotor">
-
 {!! Form::open(['url'=>'/save','method'=>'post', 'class'=>'form-horizontal', 'role'=>'form','id'=>'dashboardForm','name'=>'dashboardForm']) !!}
 
 	<div class="row">
@@ -57,9 +55,7 @@
 			<div class="form-group">
 				<label for="wait_time" class="col-sm-4 control-label">Time to wait</label>
 				<div class="col-sm-8">
-
 					{!! Form::text('duration', $faucet->duration, ['class'=>'form-control','id'=>'duration','placeholder'=>'Time']) !!}
-
 				</div>
 			</div>
 		</div>
@@ -82,13 +78,10 @@
 		<div class="col-sm-8">
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
-
-
 					<div class="btn-group pull-right" role="group">
 						{!! Html::link('/','Home',['class'=>'btn btn-default']) !!}
 						{!! Form::submit( 'Save', ['class'=>'btn btn-default']) !!}
 					</div>
-
 				</div>
 			</div>
 		</div>

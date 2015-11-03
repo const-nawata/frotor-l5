@@ -24,21 +24,6 @@ class IndexController extends Controller{
 
 		$faucet	= Faucet::find($id);
 
-
-// 		$faucets_list	= [];
-// 		$faucet_sel	= NULL;
-// 		foreach( $faucets as $faucet ){
-// 			$faucets_boxlist[$faucet->id]	= '['.$faucet->id.'] '.$faucet->name;
-// 			$faucet_sel	= $faucet->id == $id ? $faucet : $faucet_sel;
-
-
-
-// 			if( $faucet->id == $id ){
-// 				$name = $faucet->name;
-
-// 			}
-// 		}
-
     	return view( 'dashboard',[
     		'faucet'		=> $faucet,
 
