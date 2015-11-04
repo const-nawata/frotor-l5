@@ -52,7 +52,7 @@ div.index-heard *{
 	font-weight: bold;
 }
 .descr-txt{
-	font-size: 11px;
+	font-size: 12px;
 	width: 700px;
 	overflow: hidden;
 /*	white-space: nowrap;
@@ -66,9 +66,15 @@ div.index-heard *{
 	font-size: 12px;
 	vertical-align: middle;
 	padding: 0 5px 0 10px;
-	color: #ff0000;
+	color: #bd424f;
+	font-weight: bold;
 }
 
+
+.lbl-inp{
+	font-size: 14px;
+	font-weight: bold;
+}
 .input-control-td{
 	white-space: nowrap;
 	width: 1px;
@@ -76,10 +82,15 @@ div.index-heard *{
 	padding-left: 30px;
 }
 
-.txt-inp{
+.input-control-td .txt-inp{
 	padding: 0 3px 0 3px;
+	font-size: 18px;
 	width: 100px;
 	text-align: right;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
 }
 
 .num-info-td{

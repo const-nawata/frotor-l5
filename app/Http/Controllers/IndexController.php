@@ -1,8 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Faucet;
-// use Input;
-// use Request;
 use Response;
 use App\Http\Requests\ActionFaucetRequest;
 use App\Http\Requests\SaveFaucetRequest;
