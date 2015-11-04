@@ -5,6 +5,7 @@ html, body{
   background-color: #d8eff1;
   margin: 0;
   padding: 0;
+  color: #000;
 }
 
 .dialog-standard .ui-dialog-titlebar-close{
@@ -19,7 +20,13 @@ html, body{
 div.index-heard{
 	padding-top: 3px;
 	padding-bottom: 3px;
+	color: #000;
 }
+
+div.index-heard *{
+	color: #000;
+}
+
 .main-fraim{
 	width: 100%;
 	height: 100%; 
@@ -30,22 +37,49 @@ div.index-heard{
 	height: 95.5%;
 }
 
-.faucet-id-p{
-	padding-right: 10px;
-	font-size: 18px;
+.desc-tbl{
 	margin: 0;
 	vertical-align: middle;
 }
 
-div.index-heard p.faucet-id-p span.badge{
-	font-size: 16px;
+.desc-tbl .badge, .faucet-id-td{
+	font-size: 18px;
+	color: #fff;
 }
 
+.faucet-id-td{
+	color: #000;
+	font-weight: bold;
+}
+.descr-txt{
+	font-size: 11px;
+	width: 700px;
+	overflow: hidden;
+/*	white-space: nowrap;
+	text-overflow: ellipsis; */
+	height: 30px;
+	vertical-align: middle;
+	padding: 0 5px 0 30px
+}
+
+.desc-tbl td.last-payout-txt, .desc-tbl td.last-payout-txt *{
+	font-size: 12px;
+	vertical-align: middle;
+	padding: 0 5px 0 10px;
+	color: #ff0000;
+}
 
 .input-control-td{
 	white-space: nowrap;
 	width: 1px;
-	padding-right: 60px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.txt-inp{
+	padding: 0 3px 0 3px;
+	width: 100px;
+	text-align: right;
 }
 
 .num-info-td{

@@ -13,10 +13,10 @@ class IndexController extends Controller{
 
     	$faucet	= Faucet::firstReady();
 
-    	$all	= Faucet::all()->count();
-    	$active	= Faucet::where('isactive',TRUE)->count();
+    	$n_all	= Faucet::all()->count();
+    	$n_act	= Faucet::where('isactive',TRUE)->count();
 
-    	return view( 'index', ['faucet'=>$faucet, 'all'=>$all, 'active'=>$active] );
+    	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$n_all, 'n_act'=>$n_act] );
     }
 //______________________________________________________________________________
 

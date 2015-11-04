@@ -12,21 +12,31 @@
 
 <table class="main-tbl">
 	<tr>
-		<td><p class="faucet-id-p pull-right">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</span></p></td>
+		<td>
 
-		<td id="act_after_td" class="input-control-td hided">Show after
-			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'time-inp']) !!} sec.
+<table border="0" class="desc-tbl">
+	<tr>
+		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
+		<td><div class="descr-txt">Keffiyeh food truck humblebrag, next level +1 cornhole letterpress brooklyn austin try-hard direct trade cliche VHS. Pork belly small batch brooklyn butcher. Waistcoat tumblr shabby chic, scenester austin irony squid chillwave tilde humblebrag salvia franzen.</div></td>
+		<td class="last-payout-txt">Last payout on <span>10-10-2015</span></td>
+	</tr>
+</table>
+
+		</td>
+
+		<td id="act_after_td" class="input-control-td">Show after&nbsp;
+			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'txt-inp']) !!} sec.
 			{!! Form::hidden('oduraion',$faucet->duration,['id'=>'oduraion']) !!}
 		</td>
 
 		<td id="priority_td" class="input-control-td">Priority&nbsp;
-			{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'time-inp']) !!}
+			{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'txt-inp']) !!}
 		</td>
 
 		<td class="num-info-td">
 			<table cellspacing="0" cellpadding="0" border="0" class="faucets-info-tbl">
-				<tr><td rowspan="2" class="faucet-prompt-td">Faucets</td><td>all</td><td>{!! $all !!}</td></tr>
-				<tr><td>active</td><td>{!! $active !!}</td></tr>
+				<tr><td rowspan="2" class="faucet-prompt-td">Faucets</td><td>all</td><td>{!! $n_all !!}</td></tr>
+				<tr><td>active</td><td>{!! $n_act !!}</td></tr>
 			</table>
 		</td>
 
