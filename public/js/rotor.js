@@ -108,7 +108,8 @@ function postFaucet(fUrl,btnId){
 			$("#cduraion").val(faucet.duration);
 			$("#oduraion").val(faucet.duration);
 			$("#priority").val(faucet.priority);
-			$("#last_payment").html(faucet.last_payment);
+			$("#last_pay").html(faucet.last_pay);
+			$("#info").html(faucet.info);
 
 			loadFaucet();
     	},
@@ -136,6 +137,7 @@ function postDashboardData(fUrl){
 			"url":$("#url").val(),
 			"info":$("#info").val(),
 			"duration":$("#duration").val(),
+			"priority":$("#priority").val(),
 			"referal":$("#referal").val()
 		},
 

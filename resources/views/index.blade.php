@@ -12,17 +12,9 @@
 
 <table class="main-tbl">
 	<tr>
-		<td>
-
-<table border="0" class="desc-tbl">
-	<tr>
 		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
-		<td><div class="descr-txt">{!! $faucet->info !!}</div></td>
-		<td class="last-payout-txt">{!! 'Last payout on '.date('d-m-Y', strtotime($faucet->until)) !!}</td>
-	</tr>
-</table>
-
-		</td>
+		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
+		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->until)) !!}</span></td>
 
 		<td id="act_after_td" class="input-control-td"><span class="lbl-inp">Show after&nbsp;</span>
 			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'txt-inp']) !!} sec.
@@ -40,7 +32,7 @@
 			</table>
 		</td>
 
-		<td>
+		<td class='tool-btn-td'>
 			<div class="btn-group" role="group">
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-cog','title'=>'Settings']) !!}
 				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-remove','title'=>'Disable']) !!}

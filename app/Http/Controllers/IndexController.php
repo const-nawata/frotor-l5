@@ -48,7 +48,9 @@ class IndexController extends Controller{
     		'id'		=> $faucet->id,
     		'url'		=> $faucet->url,
     		'duration'	=> $faucet->duration,
-    		'priority'	=> $faucet->priority
+    		'priority'	=> $faucet->priority,
+    		'info'		=> $faucet->info,
+    		'last_pay'	=> date('d-m-Y', strtotime($faucet->until))
     	]);
     }
 //______________________________________________________________________________

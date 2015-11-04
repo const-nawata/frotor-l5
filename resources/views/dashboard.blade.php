@@ -65,6 +65,18 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
+				<label for="wait_time" class="col-sm-4 control-label">Priority</label>
+				<div class="col-sm-8">
+					{!! Form::text('priority', $faucet->priority, ['class'=>'form-control','id'=>'priority','placeholder'=>'Priority']) !!}
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="form-group">
 				<label for="info" class="col-sm-4 control-label">Referal address</label>
 				<div class="col-sm-8">
 					{!! Form::text('referal', $faucet->referal, ['class'=>'form-control','id'=>'referal','placeholder'=>'Referal address']) !!}
