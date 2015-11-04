@@ -32,7 +32,7 @@
 
 		<td>
 			<div class="btn-group" role="group">
-				{!! Html::link('/set/'.$faucet->id,'',['class'=>'btn btn-default glyphicon glyphicon-cog']) !!}
+				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-cog','title'=>'Settings']) !!}
 				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-remove','title'=>'Disable']) !!}
 				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-refresh','title'=>'(re-)Load']) !!}
 				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next']) !!}
@@ -76,6 +76,7 @@ $(document).ready(function(){
 				break;
 
 			case "settings_btn":
+				window.location="/set/"+faucet_id;
 				break;
 
 			default:

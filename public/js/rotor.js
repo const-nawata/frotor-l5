@@ -66,6 +66,11 @@ function affirm( title, message, callback ){
 }
 //------------------------------------------------------------------------------
 
+function loadFaucet(){
+	$("#main_fraim").attr("src", faucet_url );
+}
+//______________________________________________________________________________
+
 function postFaucet(fUrl,btnId){
 	var action;
 
@@ -118,11 +123,6 @@ function postFaucet(fUrl,btnId){
     		}
 		}
     });
-}
-//______________________________________________________________________________
-
-function loadFaucet(){
-	$("#main_fraim").attr("src", faucet_url );
 }
 //______________________________________________________________________________
 

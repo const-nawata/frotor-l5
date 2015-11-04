@@ -26,7 +26,6 @@ class IndexController extends Controller{
 
     	return view( 'dashboard',[
     		'faucet'		=> $faucet,
-
     	] );
     }
 //______________________________________________________________________________
