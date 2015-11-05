@@ -10,11 +10,9 @@ class IndexController extends Controller{
     public function getIndex( $isDummy=TRUE ){
 
     	$faucet	= Faucet::firstReady();
+    	$count	= Faucet::countFaucets();
 
-    	$n_all	= Faucet::all()->count();
-    	$n_act	= Faucet::where('isactive',TRUE)->count();
-
-    	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$n_all, 'n_act'=>$n_act] );
+    	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act']] );
     }
 //______________________________________________________________________________
 
@@ -43,6 +41,7 @@ class IndexController extends Controller{
 		}
 
 		$faucet	= Faucet::firstReady();
+		$count	= Faucet::countFaucets();
 
     	return Response::json([
     		'id'		=> $faucet->id,
@@ -50,7 +49,9 @@ class IndexController extends Controller{
     		'duration'	=> $faucet->duration,
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
-    		'last_pay'	=> date('d-m-Y', strtotime($faucet->until))
+    		'last_pay'	=> date('d-m-Y', strtotime($faucet->until)),
+    		'n_all'	=> $count['n_all'],
+    		'n_act'	=> $count['n_act']
     	]);
     }
 //______________________________________________________________________________

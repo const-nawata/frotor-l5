@@ -1,9 +1,6 @@
-/**
- *
- */
-
 var faucet_id=0
-	,faucet_url=""
+	,faucet_url	= ""
+	,error_ico	= "<span class='glyphicon glyphicon-exclamation-sign' style='float:left; margin:0 15px 0 0;font-size:20px;'></span>"
 ;
 
 /**
@@ -31,7 +28,7 @@ function inform( title, message, focusId ){
 		.html( message )
 		.dialog("open");
 }
-//------------------------------------------------------------------------------
+//______________________________________________________________________________
 
 /**
  * extends confirm functionality.
@@ -64,7 +61,7 @@ function affirm( title, message, callback ){
 		.html( message )
 		.dialog("open");
 }
-//------------------------------------------------------------------------------
+//______________________________________________________________________________
 
 function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
@@ -99,7 +96,7 @@ function postFaucet(fUrl,btnId){
 		success: function(faucet){
 
 			if( action == "disable" )
-				alert("Faucet disabled.");
+				inform( "Operation result", "Faucet disabled." );
 
 			faucet_id	= faucet.id;
 			faucet_url	= faucet.url;
@@ -110,6 +107,8 @@ function postFaucet(fUrl,btnId){
 			$("#priority").val(faucet.priority);
 			$("#last_pay").html(faucet.last_pay);
 			$("#info").html(faucet.info);
+			$("#n_all").html(faucet.n_all);
+			$("#n_act").html(faucet.n_act);
 
 			loadFaucet();
     	},
@@ -119,7 +118,7 @@ function postFaucet(fUrl,btnId){
     		var err = jqXHR.responseJSON;
 
     		for(var field_id in err ){
-    			alert(err[field_id][0]);
+    			inform( "Error", error_ico+err[field_id][0] );
     			break;
     		}
 		}
@@ -156,7 +155,7 @@ function postDashboardData(fUrl){
     		var err = jqXHR.responseJSON;
 
     		for(var field_id in err ){
-    			inform( "Error", "<span class='glyphicon glyphicon-exclamation-sign' style='float:left; margin:0 15px 0 0;font-size:20px;'></span>"+err[field_id][0], field_id );
+    			inform( "Error", error_ico+err[field_id][0], field_id );
     			break;
     		}
 		}

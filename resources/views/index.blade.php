@@ -6,16 +6,16 @@
 {!! Form::open(['url'=>'/faucetation','method'=>'post', 'role'=>'form','id'=>'faucetForm','name'=>'faucetForm']) !!}
 {!! Form::close() !!}
 
-
 <div class="panel panel-info main-panel-content">
 	<div class="panel-heading index-heard">
 
 <table class="main-tbl">
 	<tr>
+
 		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
+
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->until)) !!}</span></td>
-
 		<td id="act_after_td" class="input-control-td"><span class="lbl-inp">Show after&nbsp;</span>
 			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'txt-inp']) !!} sec.
 			{!! Form::hidden('oduraion',$faucet->duration,['id'=>'oduraion']) !!}
@@ -27,8 +27,8 @@
 
 		<td class="num-info-td">
 			<table cellspacing="0" cellpadding="0" border="0" class="faucets-info-tbl">
-				<tr><td rowspan="2" class="faucet-prompt-td">Faucets</td><td>all</td><td>{!! $n_all !!}</td></tr>
-				<tr><td>active</td><td>{!! $n_act !!}</td></tr>
+				<tr><td rowspan="2" class="faucet-prompt-td">Faucets</td><td>all</td><td class="faucet-count-td" id="n_all">{!! $n_all !!}</td></tr>
+				<tr><td>active</td><td id="n_act" class="faucet-count-td">{!! $n_act !!}</td></tr>
 			</table>
 		</td>
 

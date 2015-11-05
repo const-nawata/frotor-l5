@@ -50,13 +50,14 @@ div.index-heard *{
 	color: #000;
 	font-weight: bold;
 	white-space: nowrap;
+		width: 75px;
 }
 .descr-txt{
-	font-size: 12px;
-	/*width: 680px;*/
+	font-size: 14px;
+	line-height: 29px;
 	overflow: hidden;
-/*	white-space: nowrap;
-	text-overflow: ellipsis; */
+	white-space: nowrap;
+	text-overflow: ellipsis; 
 	height: 30px;
 	vertical-align: middle;
 	padding: 0 5px 0 30px
@@ -73,15 +74,19 @@ td.last-payout-txt, td.last-payout-txt *{
 	white-space: nowrap;
 }
 
+td.last-payout-txt{
+	width: 180px;
+}
+
 .lbl-inp{
 	font-size: 14px;
 	font-weight: bold;
 }
 .input-control-td{
 	white-space: nowrap;
-	width: 1px;
-	padding-right: 30px;
-	padding-left: 30px;
+	width: 200px;
+	padding-right: 20px;
+	padding-left: 20px;
 }
 
 .input-control-td .txt-inp{
@@ -97,8 +102,9 @@ td.last-payout-txt, td.last-payout-txt *{
 
 .num-info-td{
 	padding-left: 10px;
-	padding-right: 100px;
+	padding-right: 70px;
 	white-space: nowrap;
+	width: 215px;
 }
 
 .last-payment{
@@ -109,27 +115,29 @@ td.last-payout-txt, td.last-payout-txt *{
 	color: #e60073;
 	white-space: nowrap;
 }
-
-
-
 .tool-btn-td{
-	width: 158px;
+	width: 160px;
 	white-space: nowrap;
 }
-
-
-
 
 table.faucets-info-tbl td{
 	font-size: 11px;
 	padding: 0 5px;
+	color: #7c6505;
 }
 table.faucets-info-tbl td.faucet-prompt-td{
-	font-size: 12px;
+	font-size: 14px;
+	font-weight: bold;
+}
+table.faucets-info-tbl .faucet-count-td{
+	text-align: right;
+	font-weight: bold;
 }
 
 
-
+table.main-tbl td.tool-btn-td div.btn-group{
+	width: 160px;
+}
 
 
 
