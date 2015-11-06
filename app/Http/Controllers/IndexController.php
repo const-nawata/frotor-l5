@@ -15,6 +15,10 @@ class IndexController extends Controller{
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
 
     	$faucet	= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
+
+    	if(!$faucet)
+    		$faucet	= Faucet::firstReady();
+
     	$count	= Faucet::countFaucets();
 
     	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act']] );
@@ -77,15 +81,15 @@ class IndexController extends Controller{
     	try{
 	    	if( $id > 0 ){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
-				return Response::json( ['message'=>'Successfully saved.', 'id' => $id] );
+				return Response::json( ['message'=>'Faucet successfully saved.', 'id' => $id] );
 	    	}elseif($id < 0){//	Delete faucet!!!
 	    		$id	= -$id;
 				$result	= Faucet::where( 'id', $id )->delete();
-				return Response::json( ['message'=>'Successfully deleted.', 'id' => $id] );
+				return Response::json( ['message'=>'Faucet successfully deleted.', 'id' => $id] );
 	    	}else{
 				$data['isactive']	= TRUE;
 				$id	= Faucet::insertGetId($data);
-				return Response::json( ['message'=>'Successfully created.', 'id' => $id] );
+				return Response::json( ['message'=>'Faucet successfully created.', 'id' => $id] );
 	    	}
     	}catch( \Exception $e){
     		return Response::json(['message'=>$e->getMessage()]);

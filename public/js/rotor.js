@@ -9,7 +9,7 @@ var faucet_id=0
  * @param string message
  * @returns void
  */
-function inform( title, message, focusId ){
+function inform( title, message, focusId, callback ){
 
 	std_dlg
 		.dialog( "option", "width", "400px" )
@@ -20,8 +20,11 @@ function inform( title, message, focusId ){
 				click: function(){
 					$(this).dialog("close");
 
-					if(typeof focusId != "undefined")
+					if(typeof focusId != "undefined" && focusId != null)
 						$("#"+focusId).focus();
+
+					if(typeof callback != "undefined")
+						callback();
 				}
 			}
 		])
@@ -46,7 +49,7 @@ function affirm( title, message, callback ){
 				click: function(){
 					$(this).dialog("close");
 
-					if(typeof callback != "undefined")
+					if(typeof callback != "undefined" )
 						callback();
 				}
 			},
@@ -60,6 +63,23 @@ function affirm( title, message, callback ){
 		])
 		.html( message )
 		.dialog("open");
+}
+//______________________________________________________________________________
+
+function setFaucetInfo(faucet){
+
+	faucet_id	= faucet.id;
+	faucet_url	= faucet.url;
+
+	$("#faucet_id").html(faucet_id);
+	$("#cduraion").val(faucet.duration);
+	$("#oduraion").val(faucet.duration);
+	$("#priority").val(faucet.priority);
+	$("#last_pay").html(faucet.last_pay);
+	$("#info").html(faucet.info);
+	$("#n_all").html(faucet.n_all);
+	$("#n_act").html(faucet.n_act);
+
 }
 //______________________________________________________________________________
 
@@ -87,29 +107,23 @@ function postFaucet(fUrl,btnId){
 		url: fUrl,
 		data:{
 			"action":action
-			,"prev_faucet_id":faucet_id
-			,"cduratin":$("#cduraion").val()
-			,"oduratin":$("#oduraion").val()
-			,"priority":$("#priority").val()
+			,"prev_faucet_id":	faucet_id
+			,"cduratin":		$("#cduraion").val()
+			,"oduratin":		$("#oduraion").val()
+			,"priority":		$("#priority").val()
 		},
 
 		success: function(faucet){
 
-			if( action == "disable" )
-				inform( "Operation result", "Faucet disabled." );
+			if( action == "disable" ){
+				inform( "Operation result", "Faucet disabled.", null, function(){
+					setFaucetInfo(faucet);
+					loadFaucet();
+				} );
+				return;
+			}
 
-			faucet_id	= faucet.id;
-			faucet_url	= faucet.url;
-
-			$("#faucet_id").html(faucet_id);
-			$("#cduraion").val(faucet.duration);
-			$("#oduraion").val(faucet.duration);
-			$("#priority").val(faucet.priority);
-			$("#last_pay").html(faucet.last_pay);
-			$("#info").html(faucet.info);
-			$("#n_all").html(faucet.n_all);
-			$("#n_act").html(faucet.n_act);
-
+			setFaucetInfo(faucet);
 			loadFaucet();
     	},
 
@@ -132,18 +146,21 @@ function postDashboardData(fUrl){
 		dataType: "JSON",
 		url: fUrl,
 		data:{
-			"id":faucet_id,
-			"url":$("#url").val(),
-			"info":$("#info").val(),
-			"duration":$("#duration").val(),
-			"priority":$("#priority").val(),
-			"referal":$("#referal").val()
+			"id":		faucet_id,
+			"url":		$("#url").val(),
+			"info":		$("#info").val(),
+			"duration":	$("#duration").val(),
+			"priority":	$("#priority").val(),
+			"referal":	$("#referal").val()
 		},
 
 		success: function(data){
 			if(faucet_id < 0){
-				alert(data.message);
-				window.location = "/";
+				faucet_id	= - faucet_id;
+				inform( "Operation result", data.message, faucet_id, function(){
+					window.location = "/";
+				} );
+				return;
 			}
 
 			faucet_id	= data.id;

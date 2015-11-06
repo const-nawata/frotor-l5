@@ -69,8 +69,13 @@ $(document).ready(function(){
 
 		switch( btn_id ){
 			case "next_btn":
-			case "disable_btn":
 				$('#faucetForm').submit();
+				break;
+
+			case "disable_btn":
+				affirm( "Confirmation required", "Are you sure you want to disable this faucet?", function(){
+					$('#faucetForm').submit();
+				});
 				break;
 
 			case "load_btn":

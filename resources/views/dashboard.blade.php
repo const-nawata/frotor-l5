@@ -140,15 +140,8 @@ $(document).ready(function(){
 	});
 
 	$("#btn_all").click(function(event){
-
 		$("#dashboardForm").attr("action","{!! url('/') !!}/enableall");
-
 		$('#dashboardForm').submit();
-
-// 		affirm( "Confirmation required", "Are you sure you want to delete this faucet?", function(){
-// 			faucet_id = -faucet_id;
-// 			$('#dashboardForm').submit();
-// 		});
 	});
 
 });
