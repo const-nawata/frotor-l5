@@ -19,12 +19,8 @@ function inform( title, message, focusId, callback ){
 				text: "Close",
 				click: function(){
 					$(this).dialog("close");
-
-					if(typeof focusId != "undefined" && focusId != null)
-						$("#"+focusId).focus();
-
-					if(typeof callback != "undefined")
-						callback();
+					(typeof focusId != "undefined" && focusId != null) ? $("#"+focusId).focus() : null;
+					(typeof callback != "undefined") ? callback() : null;
 				}
 			}
 		])
@@ -48,9 +44,7 @@ function affirm( title, message, callback ){
 				text: "Yes",
 				click: function(){
 					$(this).dialog("close");
-
-					if(typeof callback != "undefined" )
-						callback();
+					(typeof callback != "undefined" ) ? callback() : null;
 				}
 			},
 
@@ -92,13 +86,8 @@ function postFaucet(fUrl,btnId){
 	var action;
 
 	switch( btnId ){
-		case "next_btn":
-			action	= "next";
-			break;
-
-		case "disable_btn":
-			action	= "disable";
-			break;
+		case "next_btn": action = "next"; break;
+		case "disable_btn": action = "disable"; break;
 	}
 
 	$.ajax({
@@ -114,23 +103,12 @@ function postFaucet(fUrl,btnId){
 		},
 
 		success: function(faucet){
-
-			if( action == "disable" ){
-				inform( "Operation result", "Faucet disabled.", null, function(){
-					setFaucetInfo(faucet);
-					loadFaucet();
-				} );
-				return;
-			}
-
 			setFaucetInfo(faucet);
 			loadFaucet();
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
-
     		var err = jqXHR.responseJSON;
-
     		for(var field_id in err ){
     			inform( "Error", error_ico+err[field_id][0] );
     			break;
@@ -141,6 +119,7 @@ function postFaucet(fUrl,btnId){
 //______________________________________________________________________________
 
 function postDashboardData(fUrl){
+
 	$.ajax({
 		method:"POST",
 		dataType: "JSON",
@@ -157,9 +136,7 @@ function postDashboardData(fUrl){
 		success: function(data){
 			if(faucet_id < 0){
 				faucet_id	= - faucet_id;
-				inform( "Operation result", data.message, faucet_id, function(){
-					window.location = "/";
-				} );
+				window.location = "/";
 				return;
 			}
 
@@ -178,4 +155,4 @@ function postDashboardData(fUrl){
 		}
     });
 }
-//------------------------------------------------------------------------------
+//______________________________________________________________________________

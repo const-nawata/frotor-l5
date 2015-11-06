@@ -69,9 +69,6 @@ class IndexController extends Controller{
     	try{
 	    	if( $id > 0 ){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
-
-
-
 				return Response::json( ['message'=>'Faucet successfully saved.', 'id' => $id] );
 	    	}elseif($id < 0){//	Delete faucet!!!
 	    		Session::forget('faucet_id');
