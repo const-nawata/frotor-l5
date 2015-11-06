@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+
+use Session;
 use App\Faucet;
 use Response;
 use App\Http\Requests\ActionFaucetRequest;
@@ -9,7 +11,9 @@ class IndexController extends Controller{
 
     public function getIndex( $isDummy=TRUE ){
 
-    	$faucet	= Faucet::firstReady();
+    	$faucet_id	= Session::pull( 'faucet_id', 0 );
+
+    	$faucet	= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
     	$count	= Faucet::countFaucets();
 
     	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act']] );
@@ -18,7 +22,9 @@ class IndexController extends Controller{
 
     public function getDashboard( $id ){
 
-		$faucet	= Faucet::find($id);
+    	Session::put( 'faucet_id', $id );
+
+    	$faucet	= Faucet::find($id);
 
     	return view( 'dashboard',[
     		'faucet'		=> $faucet,

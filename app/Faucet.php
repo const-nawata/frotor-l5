@@ -48,13 +48,10 @@ class Faucet extends Model{
 //______________________________________________________________________________
 
 	public static function countFaucets(){
-//     	$n_all	= Faucet::all()->count();
-//     	$n_act	= Faucet::where('isactive',TRUE)
-//     					->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
-//     					->count();
 
     	return [
     		'n_all'	=> self::all()->count(),
+
     		'n_act'	=> self::select()
     					->where('isactive',TRUE)
     					->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
