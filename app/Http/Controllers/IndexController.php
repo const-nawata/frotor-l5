@@ -11,29 +11,17 @@ use App\Http\Requests\EnableAllRequest;
 class IndexController extends Controller{
 
     public function getIndex( $isDummy=TRUE ){
-
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
-
     	$faucet	= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
-
-    	if(!$faucet)
-    		$faucet	= Faucet::firstReady();
-
     	$count	= Faucet::countFaucets();
-
     	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act']] );
     }
 //______________________________________________________________________________
 
     public function getDashboard( $id ){
-
     	Session::put( 'faucet_id', $id );
-
     	$faucet	= Faucet::find($id);
-
-    	return view( 'dashboard',[
-    		'faucet'		=> $faucet,
-    	] );
+    	return view( 'dashboard',['faucet' => $faucet,] );
     }
 //______________________________________________________________________________
 
@@ -81,8 +69,12 @@ class IndexController extends Controller{
     	try{
 	    	if( $id > 0 ){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
+
+
+
 				return Response::json( ['message'=>'Faucet successfully saved.', 'id' => $id] );
 	    	}elseif($id < 0){//	Delete faucet!!!
+	    		Session::forget('faucet_id');
 	    		$id	= -$id;
 				$result	= Faucet::where( 'id', $id )->delete();
 				return Response::json( ['message'=>'Faucet successfully deleted.', 'id' => $id] );
@@ -99,9 +91,7 @@ class IndexController extends Controller{
 
     public function postEnableAll( EnableAllRequest $request ){
     	$data	= $request->all();
-
     	$result	= Faucet::where('isactive',FALSE)->update( ['isactive' => TRUE] );
-
 		return Response::json( ['message'=>'All faucets enabled!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________

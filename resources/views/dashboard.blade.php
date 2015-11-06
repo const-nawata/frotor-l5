@@ -124,9 +124,6 @@ $(document).ready(function(){
 	});
 
 	$('#dashboardForm').submit(function(event){
-
-// 		alert("{!! url('/') !!}");
-
 		event.preventDefault();
 		postDashboardData($(this).attr('action'));
 		return false;
