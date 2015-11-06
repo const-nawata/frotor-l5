@@ -53,9 +53,9 @@ class Faucet extends Model{
     		'n_all'	=> self::all()->count(),
 
     		'n_act'	=> self::select()
-    					->where('isactive',TRUE)
-    					->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
-    					->count()
+				->where('isactive',TRUE)
+				->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
+				->count()
     	];
 	}
 //______________________________________________________________________________
@@ -67,4 +67,6 @@ class Faucet extends Model{
 
 		$faucet	= self::where( 'id', $id )->update( $data_new );
 	}
+//______________________________________________________________________________
+
 }//	Class end

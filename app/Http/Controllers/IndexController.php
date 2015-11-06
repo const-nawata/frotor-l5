@@ -6,6 +6,7 @@ use App\Faucet;
 use Response;
 use App\Http\Requests\ActionFaucetRequest;
 use App\Http\Requests\SaveFaucetRequest;
+use App\Http\Requests\EnableAllRequest;
 
 class IndexController extends Controller{
 
@@ -89,6 +90,15 @@ class IndexController extends Controller{
     	}catch( \Exception $e){
     		return Response::json(['message'=>$e->getMessage()]);
     	}
+    }
+//______________________________________________________________________________
+
+    public function postEnableAll( EnableAllRequest $request ){
+    	$data	= $request->all();
+
+    	$result	= Faucet::where('isactive',FALSE)->update( ['isactive' => TRUE] );
+
+		return Response::json( ['message'=>'All faucets enabled!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________
 

@@ -34,4 +34,6 @@ Route::get('set/{faucetId}', 'IndexController@getDashboard');
 Route::post('faucetation', 'IndexController@postActionFaucet');
 Route::post('save', 'IndexController@postSaveFaucet');
 
+Route::post('enableall', 'IndexController@postEnableAll');
+
 Route::get('showdummy', 'IndexController@getDummyPage');

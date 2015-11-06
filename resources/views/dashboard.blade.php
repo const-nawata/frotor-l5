@@ -11,11 +11,13 @@
 			<div class="form-group">
 
 				<label for="faucet_id" class="col-sm-4 control-label id-dasboard-frotor-label">Id </label>
-				<div class="col-sm-6">
+				<div class="col-sm-5">
 					<div id="faucet_id" class="badge id-dasboard-frotor-div">{!! $faucet->id !!}</div>
 				</div>
-				<div class="col-sm-2 tools-btn">
+				<div class="col-sm-3 tools-btn">
 					<div class="btn-group btn-group-xs pull-right" role="group">
+						{!! Html::link('/','',['class'=>'btn btn-default glyphicon glyphicon-home','title'=>'Home']) !!}
+						{!! Form::button('',['id'=>'btn_all','class'=>'btn btn-default glyphicon glyphicon glyphicon-record','title'=>'Enable all']) !!}
 						{!! Form::button('',['id'=>'btn_add','class'=>'btn btn-default glyphicon glyphicon-plus-sign','title'=>'Add faucet']) !!}
 						{!! Form::button('',['id'=>'btn_del','class'=>'btn btn-default glyphicon glyphicon-trash','title'=>'Delete faucet']) !!}
 					</div>
@@ -91,7 +93,6 @@
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<div class="btn-group pull-right" role="group">
-						{!! Html::link('/','Home',['class'=>'btn btn-default']) !!}
 						{!! Form::submit( 'Save', ['class'=>'btn btn-default']) !!}
 					</div>
 				</div>
@@ -123,18 +124,31 @@ $(document).ready(function(){
 	});
 
 	$('#dashboardForm').submit(function(event){
+
+// 		alert("{!! url('/') !!}");
+
 		event.preventDefault();
 		postDashboardData($(this).attr('action'));
 		return false;
 	});
 
 	$("#btn_del").click(function(event){
-
 		affirm( "Confirmation required", "Are you sure you want to delete this faucet?", function(){
 			faucet_id = -faucet_id;
 			$('#dashboardForm').submit();
 		});
+	});
 
+	$("#btn_all").click(function(event){
+
+		$("#dashboardForm").attr("action","{!! url('/') !!}/enableall");
+
+		$('#dashboardForm').submit();
+
+// 		affirm( "Confirmation required", "Are you sure you want to delete this faucet?", function(){
+// 			faucet_id = -faucet_id;
+// 			$('#dashboardForm').submit();
+// 		});
 	});
 
 });
