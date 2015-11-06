@@ -34,7 +34,7 @@
 
 		<td class='tool-btn-td'>
 			<div class="btn-group" role="group">
-				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-cog','title'=>'Settings']) !!}
+				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-wrench','title'=>'Settings']) !!}
 				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-remove','title'=>'Disable']) !!}
 				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-refresh','title'=>'(re-)Load']) !!}
 				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next']) !!}
