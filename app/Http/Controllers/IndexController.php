@@ -10,11 +10,17 @@ use App\Http\Requests\EnableAllRequest;
 
 class IndexController extends Controller{
 
+	public static $time_units	= [
+    		'h'	=> 'hour',
+    		'm'	=> 'min',
+    		's'	=> 'sec'
+    	];
+
     public function getIndex( $isDummy=TRUE ){
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
     	$faucet	= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
     	$count	= Faucet::countFaucets();
-    	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act']] );
+    	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act'], 'time_units' => self::$time_units] );
     }
 //______________________________________________________________________________
 
@@ -22,18 +28,9 @@ class IndexController extends Controller{
     	Session::put( 'faucet_id', $id );
     	$faucet	= Faucet::find( $id );
 
-    	switch($faucet->time_unit){
-    		case 'h': $faucet->duration = $faucet->duration / 3600; break;
-    		case 'm': $faucet->duration = $faucet->duration / 60; break;
-    	}
 
-    	$time_units	= [
-    		'h'	=> 'hour',
-    		'm'	=> 'min',
-    		's'	=> 'sec'
-    	];
 
-    	return view( 'dashboard',['faucet' => $faucet, 'time_units' => $time_units] );
+    	return view( 'dashboard',['faucet' => $faucet, 'time_units' => self::$time_units] );
     }
 //______________________________________________________________________________
 

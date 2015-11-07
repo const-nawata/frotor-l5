@@ -17,7 +17,7 @@
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->until)) !!}</span></td>
 		<td id="act_after_td" class="input-control-td"><span class="lbl-inp">Show after&nbsp;</span>
-			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'txt-inp']) !!} sec.
+			{!! Form::text('cduraion',$faucet->duration,['id'=>'cduraion','class'=>'txt-inp']) !!} {!! $time_units[$faucet->time_unit] !!}
 			{!! Form::hidden('oduraion',$faucet->duration,['id'=>'oduraion']) !!}
 		</td>
 

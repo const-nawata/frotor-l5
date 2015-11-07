@@ -63,7 +63,7 @@
 
 						<div class="input-group-btn">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span id="time" unit="{!! $faucet->time_unit !!}">{{ $time_units[$faucet->time_unit] }}</span> <span class="caret"></span>
+								<span id="time" unit="{!! $faucet->time_unit !!}">{!! $time_units[$faucet->time_unit] !!}</span> <span class="caret"></span>
 							</button>
 
 							<ul class="dropdown-menu dropdown-menu-right time-units">

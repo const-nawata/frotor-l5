@@ -21,17 +21,36 @@ class Faucet extends Model{
 
 	public $timestamps  = false;
 
+	private static function applyTimeUnit( $faucet ){
+	   	switch($faucet->time_unit){
+    		case 'h': $faucet->duration = $faucet->duration / 3600; break;
+    		case 'm': $faucet->duration = $faucet->duration / 60; break;
+    	}
+
+    	return $faucet;
+	}
+//______________________________________________________________________________
+
+	public static function find( $id, $columns = array('*') ){
+		$faucet	= parent::find( $id, $columns );
+		$faucet	= self::applyTimeUnit( $faucet );
+		return $faucet;
+	}
+//______________________________________________________________________________
+
 	public static function firstReady(){
 
-		$row	= self::select()
+		$faucet	= self::select()
 			->where('isactive',true)
 			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
 			->orderBy('priority', 'desc')
 			->first();
 
-		$row->url	= $row->url.($row->referal!=''?'?r='.$row->referal:'');
+		$faucet->url	= $faucet->url.($faucet->referal!=''?'?r='.$faucet->referal:'');
 
-		return $row;
+		$faucet	= self::applyTimeUnit( $faucet );
+
+		return $faucet;
 	}
 //______________________________________________________________________________
 
