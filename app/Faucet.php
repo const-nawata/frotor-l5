@@ -12,6 +12,7 @@ class Faucet extends Model{
 		'info',
 		'referal',
 		'duration',
+		'time_unit',
 		'until',
 		'isactive',
 		'priority',

@@ -129,6 +129,7 @@ function postDashboardData(fUrl){
 			"url":		$("#url").val(),
 			"info":		$("#info").val(),
 			"duration":	$("#duration").val(),
+			"time_unit":$("#time").attr("unit"),
 			"priority":	$("#priority").val(),
 			"referal":	$("#referal").val()
 		},

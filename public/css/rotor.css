@@ -146,7 +146,6 @@ table.main-tbl td.tool-btn-td div.btn-group{
 div.dasboard-frotor label.control-label{
 	white-space: nowrap;
 }
-
 .id-dasboard-frotor-div{
 	margin-top: 6px;
 	font-size: 18px;
@@ -156,4 +155,16 @@ div.dasboard-frotor label.control-label{
 }
 div.tools-btn .glyphicon{
 	font-size: 20px;
+}
+
+
+ul.time-units{
+	min-width: 68px;
+}
+ul.time-units li{
+	padding: 0 0 0 5px;
+	cursor: pointer;
+}
+ul.time-units li:HOVER {
+	background-color: #ebebeb;
 }

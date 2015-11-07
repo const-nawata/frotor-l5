@@ -20,8 +20,20 @@ class IndexController extends Controller{
 
     public function getDashboard( $id ){
     	Session::put( 'faucet_id', $id );
-    	$faucet	= Faucet::find($id);
-    	return view( 'dashboard',['faucet' => $faucet,] );
+    	$faucet	= Faucet::find( $id );
+
+    	switch($faucet->time_unit){
+    		case 'h': $faucet->duration = $faucet->duration / 3600; break;
+    		case 'm': $faucet->duration = $faucet->duration / 60; break;
+    	}
+
+    	$time_units	= [
+    		'h'	=> 'hour',
+    		'm'	=> 'min',
+    		's'	=> 'sec'
+    	];
+
+    	return view( 'dashboard',['faucet' => $faucet, 'time_units' => $time_units] );
     }
 //______________________________________________________________________________
 
@@ -66,6 +78,11 @@ class IndexController extends Controller{
     	$id	= $data['id'];
     	unset($data['id']);
 
+    	switch($data['time_unit']){
+    		case 'h': $data['duration'] = $data['duration'] * 3600; break;
+    		case 'm': $data['duration'] = $data['duration'] * 60; break;
+    	}
+
     	try{
 	    	if( $id > 0 ){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
@@ -77,7 +94,7 @@ class IndexController extends Controller{
 				return Response::json( ['message'=>'Faucet successfully deleted.', 'id' => $id] );
 	    	}else{
 				$data['isactive']	= TRUE;
-				$id	= Faucet::insertGetId($data);
+				$id	= Faucet::insertGetId( $data );
 				return Response::json( ['message'=>'Faucet successfully created.', 'id' => $id] );
 	    	}
     	}catch( \Exception $e){
