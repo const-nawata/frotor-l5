@@ -21,6 +21,12 @@ class Faucet extends Model{
 
 	public $timestamps  = false;
 
+	public static $time_unit_names	= [
+    		'h'	=> 'hour',
+    		'm'	=> 'minute',
+    		's'	=> 'second'
+    	];
+
 	private static function applyTimeUnit( $faucet ){
 	   	switch($faucet->time_unit){
     		case 'h': $faucet->duration = $faucet->duration / 3600; break;
@@ -33,8 +39,7 @@ class Faucet extends Model{
 
 	public static function find( $id, $columns = array('*') ){
 		$faucet	= parent::find( $id, $columns );
-		$faucet	= self::applyTimeUnit( $faucet );
-		return $faucet;
+		return self::applyTimeUnit( $faucet );
 	}
 //______________________________________________________________________________
 
@@ -48,22 +53,19 @@ class Faucet extends Model{
 
 		$faucet->url	= $faucet->url.($faucet->referal!=''?'?r='.$faucet->referal:'');
 
-		$faucet	= self::applyTimeUnit( $faucet );
-
-		return $faucet;
+		return self::applyTimeUnit( $faucet );
 	}
 //______________________________________________________________________________
 
-	public static function updateUntil( $id, $duration, $priority, $isUpdated=TRUE ){
+	public static function updateUntil( $data ){
 		$data_new	= [
-			'until'	=> date('Y-m-d H:i:s', strtotime('+'.$duration.' second')),
-			'priority'	=> $priority
+			'until'		=> date( 'Y-m-d H:i:s', strtotime('+'.$data['cduration'].' '.self::$time_unit_names[$data['time_unit']] )),
+			'priority'	=> $data['priority']
 		];
 
-		$isUpdated ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
+		($data['cduration']==$data['oduration']) ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
 
-		$result	= self::where( 'id', $id )->update( $data_new );
-
+		$result	= self::where( 'id', $data['prev_faucet_id'] )->update( $data_new );
 	}
 //______________________________________________________________________________
 

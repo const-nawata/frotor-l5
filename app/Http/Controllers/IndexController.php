@@ -18,8 +18,8 @@ class IndexController extends Controller{
 
     public function getIndex( $isDummy=TRUE ){
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
-    	$faucet	= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
-    	$count	= Faucet::countFaucets();
+    	$faucet		= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
+    	$count		= Faucet::countFaucets();
     	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act'], 'time_units' => self::$time_units] );
     }
 //______________________________________________________________________________
@@ -27,25 +27,16 @@ class IndexController extends Controller{
     public function getDashboard( $id ){
     	Session::put( 'faucet_id', $id );
     	$faucet	= Faucet::find( $id );
-
-
-
     	return view( 'dashboard',['faucet' => $faucet, 'time_units' => self::$time_units] );
     }
 //______________________________________________________________________________
 
     public function postActionFaucet( ActionFaucetRequest $request ){
-
     	$data	= $request->all();
 
 		switch( $data['action'] ){
-			case 'next':
-				Faucet::updateUntil( $data['prev_faucet_id'], $data['cduratin'], $data['priority'], ($data['cduratin']==$data['oduratin']) );
-				break;
-
-			case 'disable':
-				Faucet::disableFaucet( $data['prev_faucet_id'] );
-				break;
+			case 'next':	Faucet::updateUntil( $data ); break;
+			case 'disable':	Faucet::disableFaucet( $data['prev_faucet_id'] ); break;
 		}
 
 		$faucet	= Faucet::firstReady();

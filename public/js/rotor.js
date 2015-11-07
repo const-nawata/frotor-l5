@@ -97,8 +97,9 @@ function postFaucet(fUrl,btnId){
 		data:{
 			"action":action
 			,"prev_faucet_id":	faucet_id
-			,"cduratin":		$("#cduraion").val()
-			,"oduratin":		$("#oduraion").val()
+			,"cduration":		$("#cduration").val()
+			,"oduration":		$("#oduration").val()
+			,"time_unit":		$("#time_unit").val()
 			,"priority":		$("#priority").val()
 		},
 
