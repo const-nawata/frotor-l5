@@ -42,16 +42,19 @@ class IndexController extends Controller{
 		$faucet	= Faucet::firstReady();
 		$count	= Faucet::countFaucets();
 
-    	return Response::json([
+
+		$ret_data	= [
     		'id'		=> $faucet->id,
     		'url'		=> $faucet->url,
     		'duration'	=> $faucet->duration,
+			'time_unit_name'	=> self::$time_units[$faucet->time_unit],
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
     		'last_pay'	=> date('d-m-Y', strtotime($faucet->until)),
     		'n_all'	=> $count['n_all'],
-    		'n_act'	=> $count['n_act']
-    	]);
+    		'n_act'	=> $count['n_act']];
+
+		return Response::json($ret_data);
     }
 //______________________________________________________________________________
 

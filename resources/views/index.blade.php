@@ -11,13 +11,12 @@
 
 <table class="main-tbl">
 	<tr>
-
 		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
 
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->until)) !!}</span></td>
 		<td id="act_after_td" class="input-control-td"><span class="lbl-inp">Show after&nbsp;</span>
-			{!! Form::text('cduration',$faucet->duration,['id'=>'cduration','class'=>'txt-inp']) !!} {!! $time_units[$faucet->time_unit] !!}
+			{!! Form::text('cduration',$faucet->duration,['id'=>'cduration','class'=>'txt-inp']) !!} <span id="time_unit_name">{!! $time_units[$faucet->time_unit] !!}</span>
 			{!! Form::hidden('oduration',$faucet->duration,['id'=>'oduration']) !!}
 			{!! Form::hidden('time_unit',$faucet->time_unit,['id'=>'time_unit']) !!}
 		</td>
@@ -41,18 +40,14 @@
 				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next']) !!}
 			</div>
 		</td>
-
 	</tr>
 </table>
-
 
 	</div>
 
 	<div class="panel-body ifraim-panel">
 	   <iframe id="main_fraim" class="main-fraim" src="{{ url('/showdummy') }}"></iframe>
 	</div>
-
-
 </div>
 @stop
 
@@ -99,5 +94,4 @@ $(document).ready(function(){
 
 });
 </script>
-
 @stop

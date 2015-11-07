@@ -58,6 +58,7 @@ class Faucet extends Model{
 //______________________________________________________________________________
 
 	public static function updateUntil( $data ){
+
 		$data_new	= [
 			'until'		=> date( 'Y-m-d H:i:s', strtotime('+'.$data['cduration'].' '.self::$time_unit_names[$data['time_unit']] )),
 			'priority'	=> $data['priority']

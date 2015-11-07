@@ -66,8 +66,9 @@ function setFaucetInfo(faucet){
 	faucet_url	= faucet.url;
 
 	$("#faucet_id").html(faucet_id);
-	$("#cduraion").val(faucet.duration);
-	$("#oduraion").val(faucet.duration);
+	$("#cduration").val(faucet.duration);
+	$("#oduration").val(faucet.duration);
+	$("#time_unit_name").html(faucet.time_unit_name);
 	$("#priority").val(faucet.priority);
 	$("#last_pay").html(faucet.last_pay);
 	$("#info").html(faucet.info);
