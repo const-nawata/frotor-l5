@@ -7,6 +7,7 @@ use Response;
 use App\Http\Requests\ActionFaucetRequest;
 use App\Http\Requests\SaveFaucetRequest;
 use App\Http\Requests\EnableAllRequest;
+use App\Http\Requests\ResetAllRequest;
 
 class IndexController extends Controller{
 
@@ -77,7 +78,7 @@ class IndexController extends Controller{
     	try{
 	    	if( $id > 0 ){
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
-				return Response::json( ['message'=>'Faucet successfully saved.', 'id' => $id] );
+				return Response::json( ['message'=>'Faucet successfully updated.', 'id' => $id] );
 	    	}elseif($id < 0){//	Delete faucet!!!
 	    		Session::forget('faucet_id');
 	    		$id	= -$id;
@@ -86,7 +87,8 @@ class IndexController extends Controller{
 	    	}else{
 				$data['isactive']	= TRUE;
 				$id	= Faucet::insertGetId( $data );
-				return Response::json( ['message'=>'Faucet successfully created.', 'id' => $id] );
+				Session::put( 'faucet_id', $id );
+				return Response::json( ['message'=>'Faucet successfully added.', 'id' => $id] );
 	    	}
     	}catch( \Exception $e){
     		return Response::json(['message'=>$e->getMessage()]);
@@ -98,6 +100,14 @@ class IndexController extends Controller{
     	$data	= $request->all();
     	$result	= Faucet::where('isactive',FALSE)->update( ['isactive' => TRUE] );
 		return Response::json( ['message'=>'All faucets enabled!!!', 'id' => $data['id']] );
+    }
+//______________________________________________________________________________
+
+    public function postResetAll( ResetAllRequest $request ){
+    	$data	= $request->all();
+    	$result	= Faucet::where('until','>',date('Y-m-d H:i:s'))->update( ['until' => date('Y-m-d H:i:s')] );
+
+    	return Response::json( ['message'=>'All faucets reset to current date!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________
 

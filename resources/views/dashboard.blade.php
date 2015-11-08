@@ -17,7 +17,8 @@
 				<div class="col-sm-3 tools-btn">
 					<div class="btn-group btn-group-xs pull-right" role="group">
 						{!! Html::link('/','',['class'=>'btn btn-default glyphicon glyphicon-home','title'=>'Home']) !!}
-						{!! Form::button('',['id'=>'btn_all','class'=>'btn btn-default glyphicon glyphicon glyphicon-record','title'=>'Enable all']) !!}
+						{!! Form::button('',['id'=>'btn_all','class'=>'btn btn-default glyphicon glyphicon-ok','title'=>'Enable all']) !!}
+						{!! Form::button('',['id'=>'btn_reset','class'=>'btn btn-default glyphicon glyphicon-share-alt gly-flip-horizontal','title'=>'Reset all untils']) !!}
 						{!! Form::button('',['id'=>'btn_add','class'=>'btn btn-default glyphicon glyphicon-plus-sign','title'=>'Add faucet']) !!}
 						{!! Form::button('',['id'=>'btn_del','class'=>'btn btn-default glyphicon glyphicon-trash','title'=>'Delete faucet']) !!}
 					</div>
@@ -142,7 +143,12 @@ $(document).ready(function(){
 		$("#info").val("");
 		$("#referal").val("");
 		$("#duration").val(0);
+		$("#priority").val(1);
 		$("#faucet_id").html("New faucet");
+
+		$("#time").attr("unit","m");
+		$("#time").html("{{ $time_units['m'] }}");
+
 		$("#url").focus();
 	});
 
@@ -161,6 +167,11 @@ $(document).ready(function(){
 
 	$("#btn_all").click(function(event){
 		$("#dashboardForm").attr("action","{!! url('/') !!}/enableall");
+		$('#dashboardForm').submit();
+	});
+
+	$("#btn_reset").click(function(event){
+		$("#dashboardForm").attr("action","{!! url('/') !!}/resetall");
 		$('#dashboardForm').submit();
 	});
 
