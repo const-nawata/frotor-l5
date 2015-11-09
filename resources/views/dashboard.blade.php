@@ -18,7 +18,7 @@
 					<div class="btn-group btn-group-xs pull-right" role="group">
 						{!! Html::link('/','',['class'=>'btn btn-default glyphicon glyphicon-home','title'=>'Home']) !!}
 						{!! Form::button('',['id'=>'btn_all','class'=>'btn btn-default glyphicon glyphicon-ok','title'=>'Enable all']) !!}
-						{!! Form::button('',['id'=>'btn_reset','class'=>'btn btn-default glyphicon glyphicon-share-alt gly-flip-horizontal','title'=>'Reset all untils']) !!}
+						{!! Form::button('',['id'=>'btn_reset','class'=>'btn btn-default glyphicon glyphicon-refresh','title'=>'Reset all untils']) !!}
 						{!! Form::button('',['id'=>'btn_add','class'=>'btn btn-default glyphicon glyphicon-plus-sign','title'=>'Add faucet']) !!}
 						{!! Form::button('',['id'=>'btn_del','class'=>'btn btn-default glyphicon glyphicon-trash','title'=>'Delete faucet']) !!}
 					</div>

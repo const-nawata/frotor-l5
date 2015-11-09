@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-
 use Session;
 use App\Faucet;
 use Response;
@@ -106,7 +105,6 @@ class IndexController extends Controller{
     public function postResetAll( ResetAllRequest $request ){
     	$data	= $request->all();
     	$result	= Faucet::where('until','>',date('Y-m-d H:i:s'))->update( ['until' => date('Y-m-d H:i:s')] );
-
     	return Response::json( ['message'=>'All faucets reset to current date!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________

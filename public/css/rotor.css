@@ -8,11 +8,13 @@ html, body{
   color: #000;
 }
 
+/*
 .gly-flip-horizontal{
 	transform: scale(-1, 1);
 	-o-transform: scale(-1);
 	-o-transform-origin: left top;
 }
+*/
 
 .dialog-standard .ui-dialog-titlebar-close{
   display: none;
