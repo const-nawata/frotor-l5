@@ -8,6 +8,17 @@ html, body{
   color: #000;
 }
 
+.main-frotor-title{
+	font-size: 150px;
+	text-align: center;
+	background-color: #629d9a;
+	font-family: Impact, Charcoal, sans-serif;
+	font-weight: bold;
+	letter-spacing: 60px;
+	color: #804000;
+	margin-bottom: 100px;
+}
+
 /*
 .gly-flip-horizontal{
 	transform: scale(-1, 1);

@@ -36,7 +36,7 @@
 			<div class="btn-group" role="group">
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-wrench','title'=>'Settings']) !!}
 				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon glyphicon-remove','title'=>'Disable']) !!}
-				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-repeat','title'=>'Road current faucet']) !!}
+				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-repeat','title'=>'Load current faucet']) !!}
 				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next']) !!}
 			</div>
 		</td>
