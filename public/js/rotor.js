@@ -58,7 +58,7 @@ function affirm( title, message, callback ){
 		.html( message )
 		.dialog("open");
 }
-//______________________________________________________________________________
+//______________________________________________________________________________ time_unit
 
 function setFaucetInfo(faucet){
 
@@ -67,7 +67,9 @@ function setFaucetInfo(faucet){
 
 	$("#faucet_id").html(faucet_id);
 	$("#cduration").val(faucet.duration);
+	$("#cduration").attr("value",faucet.duration);
 	$("#oduration").val(faucet.duration);
+	$("#time_unit").val(faucet.time_unit);
 	$("#time_unit_name").html(faucet.time_unit_name);
 	$("#priority").val(faucet.priority);
 	$("#last_pay").html(faucet.last_pay);
