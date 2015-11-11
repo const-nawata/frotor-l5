@@ -82,6 +82,11 @@ function setFaucetInfo(faucet){
 
 function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
+
+	$("#load_btn")
+		.removeClass("glyphicon-download-alt")
+		.addClass("glyphicon-repeat")
+		.attr("title","Refresh");
 }
 //______________________________________________________________________________
 
