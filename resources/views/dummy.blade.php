@@ -5,7 +5,7 @@
 
 
 <div>
-	<img src="/images/Bitcoin.png" alt="Bitcoin" class="img-circle center-block" style="width:400px; height: 400px;">
+	<img src="/images/Bitcoin_1.png" alt="Bitcoin" class="img-circle center-block" style="width:450px; height: 450px;">
 </div>
 
 

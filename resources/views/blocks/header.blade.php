@@ -30,6 +30,8 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
+	<link href="/images/Bitcoin_1.png" type="image/png" rel="icon">
+
 	<link rel="stylesheet" href="/css/rotor.css">
 	<script type="text/javascript" src="/js/rotor.js"></script>
 
