@@ -139,8 +139,7 @@ function postDashboardData(fUrl){
 			"info":		$("#info").val(),
 			"duration":	$("#duration").val(),
 			"time_unit":$("#time").attr("unit"),
-			"priority":	$("#priority").val(),
-			"referal":	$("#referal").val()
+			"priority":	$("#priority").val()
 		},
 
 		success: function(data){

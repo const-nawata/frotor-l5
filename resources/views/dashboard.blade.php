@@ -98,18 +98,6 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
-				<label for="info" class="col-sm-4 control-label">Referal address</label>
-				<div class="col-sm-8">
-					{!! Form::text('referal', $faucet->referal, ['class'=>'form-control','id'=>'referal','placeholder'=>'Referal address']) !!}
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-4"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-sm-8">
-			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<div class="btn-group pull-right" role="group">
 						{!! Form::submit( 'Save', ['class'=>'btn btn-default']) !!}
@@ -141,7 +129,7 @@ $(document).ready(function(){
 
 		$("#url").val("");
 		$("#info").val("");
-		$("#referal").val("");
+// 		$("#referal").val("");
 		$("#duration").val(0);
 		$("#priority").val(1);
 		$("#faucet_id").html("New faucet");

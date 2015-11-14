@@ -10,7 +10,6 @@ class Faucet extends Model{
 	protected $fillable = [
 		'url',
 		'info',
-		'referal',
 		'duration',
 		'time_unit',
 		'until',
@@ -50,8 +49,6 @@ class Faucet extends Model{
 			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
 			->orderBy('priority', 'desc')
 			->first();
-
-		$faucet->url	= $faucet->url.($faucet->referal!=''?'?r='.$faucet->referal:'');
 
 		return self::applyTimeUnit( $faucet );
 	}
