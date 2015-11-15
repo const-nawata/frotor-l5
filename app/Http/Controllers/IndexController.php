@@ -51,7 +51,7 @@ class IndexController extends Controller{
 			'time_unit_name'=> self::$time_units[$faucet->time_unit],
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
-    		'last_pay'	=> date('d-m-Y', strtotime($faucet->until)),
+    		'last_pay'	=> date('d-m-Y', strtotime( $faucet->updated )),
     		'n_all'	=> $count['n_all'],
     		'n_act'	=> $count['n_act']];
 
