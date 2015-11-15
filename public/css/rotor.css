@@ -1,11 +1,17 @@
 @CHARSET "UTF-8";
 
 html, body{
-  height: 99.82%;
-  background-color: #d8eff1;
-  margin: 0;
-  padding: 0;
-  color: #000;
+	height: 99.82%;
+	background-color: #d8eff1;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+.ui-widget-overlay{
+	background: none;
+	opacity: 0.7;
+	background-color: #799786;
 }
 
 .main-frotor-title{

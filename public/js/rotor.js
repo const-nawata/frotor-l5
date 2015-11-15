@@ -12,7 +12,7 @@ var faucet_id=0
 function inform( title, message, focusId, callback ){
 
 	std_dlg
-		.dialog( "option", "width", "400px" )
+		.dialog( "option", "width", "450px" )
 	    .dialog( "option", "title", title )
 		.dialog( "option", "buttons",[
 			{
