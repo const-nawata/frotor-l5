@@ -58,7 +58,7 @@ function affirm( title, message, callback ){
 		.html( message )
 		.dialog("open");
 }
-//______________________________________________________________________________ time_unit
+//______________________________________________________________________________
 
 function setFaucetInfo(faucet){
 
@@ -84,7 +84,7 @@ function loadFaucet(){
 	$("#main_fraim").attr("src", faucet_url );
 
 	$("#load_btn")
-		.removeClass("glyphicon-download-alt")
+		.removeClass("glyphicon-play")
 		.addClass("glyphicon-repeat")
 		.attr("title","Refresh");
 }
