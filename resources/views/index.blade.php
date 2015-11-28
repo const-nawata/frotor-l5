@@ -11,9 +11,12 @@
 
 <table class="main-tbl">
 	<tr>
+
+@if( $faucet->id != NULL )
 		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
 
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
+
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->updated)) !!}</span></td>
 		<td id="act_after_td" class="input-control-td"><span class="lbl-inp">Show after&nbsp;</span>
 			{!! Form::text('cduration',$faucet->duration,['id'=>'cduration','class'=>'txt-inp']) !!} <span id="time_unit_name">{!! $time_units[$faucet->time_unit] !!}</span>
@@ -24,7 +27,9 @@
 		<td id="priority_td" class="input-control-td"><span class="lbl-inp">Priority&nbsp;</span>
 			{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'txt-inp']) !!}
 		</td>
-
+@else
+		<td class="no-active-td">&#8212; NO ACTIVE FAUCETS &#8212;</td>
+@endif
 		<td class="num-info-td">
 			<table cellspacing="0" cellpadding="0" border="0" class="faucets-info-tbl">
 				<tr><td rowspan="2" class="faucet-prompt-td">Faucets</td><td>all</td><td class="faucet-count-td" id="n_all">{!! $n_all !!}</td></tr>
@@ -33,10 +38,14 @@
 		</td>
 
 		<td class='tool-btn-td'>
-			<div class="btn-group" role="group">
+			<div class="btn-group {!! $btn_grp_css !!} pull-right" role="group">
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon-wrench','title'=>'Settings']) !!}
+
+@if( $faucet->id != NULL )
 				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon-remove','title'=>'Disable']) !!}
 				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-play','title'=>'Show current faucet']) !!}
+@endif
+
 				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next']) !!}
 			</div>
 		</td>

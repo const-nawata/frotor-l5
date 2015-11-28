@@ -16,11 +16,18 @@ class IndexController extends Controller{
     		's'	=> 'sec'
     	];
 
-    public function getIndex( $isDummy=TRUE ){
+    public function getIndex(){
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
     	$faucet		= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
     	$count		= Faucet::countFaucets();
-    	return view( 'index', ['faucet'=>$faucet, 'n_all'=>$count['n_all'], 'n_act'=>$count['n_act'], 'time_units' => self::$time_units] );
+
+    	return view( 'index', [
+    		'faucet'		=> $faucet,
+    		'n_all'			=> $count['n_all'],
+    		'n_act'			=> $count['n_act'],
+    		'time_units'	=> self::$time_units,
+    		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2')
+    	]);
     }
 //______________________________________________________________________________
 
@@ -41,7 +48,6 @@ class IndexController extends Controller{
 
 		$faucet	= Faucet::firstReady();
 		$count	= Faucet::countFaucets();
-
 
 		$ret_data	= [
     		'id'		=> $faucet->id,

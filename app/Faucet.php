@@ -18,7 +18,7 @@ class Faucet extends Model{
 		'updated'
 	];
 
-	public $timestamps  = false;
+	public $timestamps  = FALSE;
 
 	public static $time_unit_names	= [
     		'h'	=> 'hour',
@@ -40,17 +40,30 @@ class Faucet extends Model{
 		$faucet	= parent::find( $id, $columns );
 		return self::applyTimeUnit( $faucet );
 	}
-//______________________________________________________________________________
+//______________________________________________________________________________   TRUE
 
 	public static function firstReady(){
 
 		$faucet	= self::select()
-			->where('isactive',true)
+			->where('isactive',TRUE)
 			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
 			->orderBy('priority', 'desc')
 			->first();
 
-		return self::applyTimeUnit( $faucet );
+		if( $faucet == NULL ){
+			$faucet	= new Faucet([]);
+			$faucet->url= 'showdummy';
+
+			$faucet->id			=
+			$faucet->time_unit	=
+			$faucet->priority	=
+			$faucet->info		=
+			$faucet->updated	= NULL;
+		}
+
+		$faucet	= self::applyTimeUnit( $faucet );
+
+		return $faucet;
 	}
 //______________________________________________________________________________
 

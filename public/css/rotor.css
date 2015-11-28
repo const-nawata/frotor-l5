@@ -113,6 +113,14 @@ td.last-payout-txt{
 	padding-right: 20px;
 	padding-left: 20px;
 }
+table.main-tbl td.no-active-td{
+	width: 1455px;	
+	font-size: 22px;
+	font-weight: bold;
+	letter-spacing: 5px;
+	color: #e60073;
+	text-align: center;
+}
 
 .input-control-td .txt-inp{
 	padding: 0 3px 0 3px;
@@ -160,8 +168,12 @@ table.faucets-info-tbl .faucet-count-td{
 }
 
 
-table.main-tbl td.tool-btn-td div.btn-group{
+table.main-tbl td.tool-btn-td div.btn4{
 	width: 160px;
+}
+
+table.main-tbl td.tool-btn-td .btn2{
+		width: 80px;
 }
 
 
