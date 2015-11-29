@@ -70,6 +70,14 @@ class IndexController extends Controller{
     }
 //______________________________________________________________________________
 
+    private function prepareUrl( $data ){
+    	$url			= $data['url'];
+		$data['url']	= parse_url( $url, PHP_URL_SCHEME ).'://'.parse_url( $url, PHP_URL_HOST ).parse_url( $url, PHP_URL_PATH );
+		$data['query']	= parse_url( $url, PHP_URL_QUERY );
+
+    	return $data;
+    }
+
     public function postSaveFaucet( SaveFaucetRequest $request ){
     	$data	= $request->all();
 
@@ -83,21 +91,23 @@ class IndexController extends Controller{
 
     	try{
 	    	if( $id > 0 ){
+	    		$data	= $this->prepareUrl( $data );
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
-				return Response::json( ['message'=>'Faucet successfully updated.', 'id' => $id] );
-	    	}elseif($id < 0){//	Delete faucet!!!
+				return Response::json( ['error'=>FALSE, 'message'=>'Faucet successfully updated.', 'id' => $id] );
+	    	}elseif($id < 0){//	--- Delete faucet!!!
 	    		Session::forget('faucet_id');
 	    		$id	= -$id;
 				$result	= Faucet::where( 'id', $id )->delete();
 				return Response::json( ['message'=>'Faucet successfully deleted.', 'id' => $id] );
 	    	}else{
 				$data['isactive']	= TRUE;
+				$data	= $this->prepareUrl( $data );
 				$id	= Faucet::insertGetId( $data );
 				Session::put( 'faucet_id', $id );
-				return Response::json( ['message'=>'Faucet successfully added.', 'id' => $id] );
+				return Response::json( ['error'=>FALSE, 'message'=>'Faucet successfully added.', 'id' => $id] );
 	    	}
-    	}catch( \Exception $e){
-    		return Response::json(['message'=>$e->getMessage()]);
+    	}catch( \Illuminate\Database\QueryException $e){
+    		return Response::json(['error'=>TRUE, 'message' => $e->errorInfo[2], 'id' => $id]);
     	}
     }
 //______________________________________________________________________________
@@ -115,5 +125,35 @@ class IndexController extends Controller{
     	return Response::json( ['message'=>'All faucets reset to current date!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________
+
+
+//TODO: Debug method
+//     public function setDomain(){
+
+//     	$faicets	= Faucet::orderBy('domain')->get();
+//     	foreach( $faicets  as $faicet ){
+//     		$url	= $faicet->domain;
+
+// //     		$domain	= parse_url( $url, PHP_URL_SCHEME ).'://'.parse_url( $url, PHP_URL_HOST )
+// //     		;
+
+// //     		$path	= parse_url( $url, PHP_URL_PATH ).parse_url( $url, PHP_URL_QUERY );
+
+//     		$data	= [
+//     			'domain'	=> parse_url( $url, PHP_URL_SCHEME ).'://'.parse_url( $url, PHP_URL_HOST ).parse_url( $url, PHP_URL_PATH ),
+//     			'path'		=> parse_url( $url, PHP_URL_QUERY )
+//     		];
+
+//     		$result	= Faucet::where( 'id', $faicet->id )->update( $data );
+
+
+// //     		echo "domain: ".$domain.' -- '.$path.'<br>';
+
+
+//     	}
+
+
+
+//     }
 
 }//	Class end

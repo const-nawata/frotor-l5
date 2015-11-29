@@ -8,7 +8,9 @@ class Faucet extends Model{
 	protected $table = 'faucets';
 
 	protected $fillable = [
-		'url',
+// 		'url',
+		'domain',
+		'path',
 		'info',
 		'duration',
 		'time_unit',
@@ -37,7 +39,8 @@ class Faucet extends Model{
 //______________________________________________________________________________
 
 	public static function find( $id, $columns = ['*'] ){
-		$faucet	= parent::find( $id, $columns );
+		$faucet		= parent::find( $id, $columns );
+		$faucet->url= $faucet->url.'?'.$faucet->query;
 		return self::applyTimeUnit( $faucet );
 	}
 //______________________________________________________________________________   TRUE
@@ -70,6 +73,8 @@ class Faucet extends Model{
 		if( $faucet == NULL ){
 			$faucet		= self::getNullFoucet();
 			$faucet->url= 'showdummy';
+		}else{
+			$faucet->url= $faucet->url.'?'.$faucet->query;
 		}
 
 		$faucet	= self::applyTimeUnit( $faucet );

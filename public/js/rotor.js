@@ -143,6 +143,13 @@ function postDashboardData(fUrl){
 		},
 
 		success: function(data){
+
+			if(data.error){
+				inform( "Error", error_ico+data.message );
+				faucet_id	= data.id;
+				return;
+			}
+
 			if(faucet_id < 0){
 				faucet_id	= - faucet_id;
 				window.location = "/";
@@ -156,7 +163,6 @@ function postDashboardData(fUrl){
 
     	error: function(jqXHR, textStatus, errorThrown){
     		var err = jqXHR.responseJSON;
-
     		for(var field_id in err ){
     			inform( "Error", error_ico+err[field_id][0], field_id );
     			break;
