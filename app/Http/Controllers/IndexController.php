@@ -33,7 +33,7 @@ class IndexController extends Controller{
 
     public function getDashboard( $id ){
     	Session::put( 'faucet_id', $id );
-    	$faucet	= Faucet::find( $id );
+    	$faucet	= (bool)$id ? Faucet::find( $id ) : Faucet::getNullFoucet();
     	return view( 'dashboard',['faucet' => $faucet, 'time_units' => self::$time_units] );
     }
 //______________________________________________________________________________

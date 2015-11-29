@@ -12,7 +12,7 @@
 <table class="main-tbl">
 	<tr>
 
-@if( $faucet->id != NULL )
+@if( (bool)$faucet->id )
 		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
 
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
@@ -41,7 +41,7 @@
 			<div class="btn-group {!! $btn_grp_css !!} pull-right" role="group">
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon-wrench','title'=>'Settings']) !!}
 
-@if( $faucet->id != NULL )
+@if( (bool)$faucet->id )
 				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon-remove','title'=>'Disable']) !!}
 				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-play','title'=>'Show current faucet']) !!}
 @endif

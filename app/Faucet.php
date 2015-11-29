@@ -36,11 +36,28 @@ class Faucet extends Model{
 	}
 //______________________________________________________________________________
 
-	public static function find( $id, $columns = array('*') ){
+	public static function find( $id, $columns = ['*'] ){
 		$faucet	= parent::find( $id, $columns );
 		return self::applyTimeUnit( $faucet );
 	}
 //______________________________________________________________________________   TRUE
+
+
+	public static function getNullFoucet(){
+			$faucet	= new Faucet([]);
+			$faucet->id			= 0;
+
+			$faucet->url		=
+			$faucet->info		=
+			$faucet->updated	= NULL;
+
+			$faucet->priority	= 1;
+			$faucet->time_unit	= 'm';
+			$faucet->duration	= 0;
+
+			return $faucet;
+	}
+
 
 	public static function firstReady(){
 
@@ -51,14 +68,8 @@ class Faucet extends Model{
 			->first();
 
 		if( $faucet == NULL ){
-			$faucet	= new Faucet([]);
+			$faucet		= self::getNullFoucet();
 			$faucet->url= 'showdummy';
-
-			$faucet->id			=
-			$faucet->time_unit	=
-			$faucet->priority	=
-			$faucet->info		=
-			$faucet->updated	= NULL;
 		}
 
 		$faucet	= self::applyTimeUnit( $faucet );

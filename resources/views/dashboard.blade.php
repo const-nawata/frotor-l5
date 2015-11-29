@@ -12,7 +12,7 @@
 
 				<label for="faucet_id" class="col-sm-4 control-label id-dasboard-frotor-label">Id </label>
 				<div class="col-sm-5">
-					<div id="faucet_id" class="badge id-dasboard-frotor-div">{!! $faucet->id !!}</div>
+					<div id="faucet_id" class="badge id-dasboard-frotor-div">{!! $faucet->id ? $faucet->id : 'New faucet' !!}</div>
 				</div>
 				<div class="col-sm-3 tools-btn">
 					<div class="btn-group btn-group-xs pull-right" role="group">
@@ -108,6 +108,7 @@
 		<div class="col-sm-4"></div>
 	</div>
 
+
 {!! Form::close() !!}
 </div>
 
@@ -116,6 +117,8 @@
 @section('js_extra')
 <script type="text/javascript">
 $(document).ready(function(){
+
+
 
 	faucet_id = {!! $faucet->id !!};
 
@@ -129,7 +132,6 @@ $(document).ready(function(){
 
 		$("#url").val("");
 		$("#info").val("");
-// 		$("#referal").val("");
 		$("#duration").val(0);
 		$("#priority").val(1);
 		$("#faucet_id").html("New faucet");
@@ -162,6 +164,9 @@ $(document).ready(function(){
 		$("#dashboardForm").attr("action","{!! url('/') !!}/resetall");
 		$('#dashboardForm').submit();
 	});
+
+
+
 
 });
 </script>
