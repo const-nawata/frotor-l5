@@ -10,12 +10,6 @@ use App\Http\Requests\ResetAllRequest;
 
 class IndexController extends Controller{
 
-	public static $time_units	= [
-    		'h'	=> 'hour',
-    		'm'	=> 'min',
-    		's'	=> 'sec'
-    	];
-
     public function getIndex(){
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
     	$faucet		= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
@@ -25,7 +19,6 @@ class IndexController extends Controller{
     		'faucet'		=> $faucet,
     		'n_all'			=> $count['n_all'],
     		'n_act'			=> $count['n_act'],
-    		'time_units'	=> self::$time_units,
     		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2')
     	]);
     }
@@ -34,32 +27,46 @@ class IndexController extends Controller{
     public function getDashboard( $id ){
     	Session::put( 'faucet_id', $id );
     	$faucet	= (bool)$id ? Faucet::find( $id ) : Faucet::getNullFoucet();
-    	return view( 'dashboard',['faucet' => $faucet, 'time_units' => self::$time_units] );
+    	return view( 'dashboard',['faucet' => $faucet] );
     }
 //______________________________________________________________________________
 
     public function postActionFaucet( ActionFaucetRequest $request ){
+
     	$data	= $request->all();
 
 		switch( $data['action'] ){
-			case 'next':	Faucet::updateUntil( $data ); break;
-			case 'disable':	Faucet::disableFaucet( $data ); break;
+			case 'next':
+				Faucet::updateUntil( $data );
+				$faucet	= Faucet::firstReady();
+				break;
+
+			case 'disable':
+				Faucet::disableFaucet( $data );
+				$faucet	= Faucet::firstReady();
+				break;
+
+			case 'save_duration':
+				$result	= Faucet::where( 'id', $data['prev_faucet_id'] )->update( ['duration'=>$data['cduration'] * 60] );
+				$faucet	= Faucet::find( $data['prev_faucet_id'] );
+				$message	= 'New duration successfully saved.';
+				break;
 		}
 
-		$faucet	= Faucet::firstReady();
 		$count	= Faucet::countFaucets();
 
 		$ret_data	= [
     		'id'		=> $faucet->id,
     		'url'		=> $faucet->url,
     		'duration'	=> $faucet->duration,
-			'time_unit'	=> $faucet->time_unit,
-			'time_unit_name'=> self::$time_units[$faucet->time_unit],
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
     		'last_pay'	=> date('d-m-Y', strtotime( $faucet->updated )),
     		'n_all'	=> $count['n_all'],
-    		'n_act'	=> $count['n_act']];
+    		'n_act'	=> $count['n_act']
+		];
+
+		isset($message) ? $ret_data['message'] = $message : NULL;
 
 		return Response::json($ret_data);
     }
@@ -79,15 +86,14 @@ class IndexController extends Controller{
     }
 
     public function postSaveFaucet( SaveFaucetRequest $request ){
+
+
+
+
     	$data	= $request->all();
 
     	$id	= $data['id'];
     	unset($data['id']);
-
-    	switch($data['time_unit']){
-    		case 'h': $data['duration'] = $data['duration'] * 3600; break;
-    		case 'm': $data['duration'] = $data['duration'] * 60; break;
-    	}
 
     	try{
 	    	if( $id > 0 ){

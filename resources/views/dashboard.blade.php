@@ -56,27 +56,9 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
-				<label for="wait_time" class="col-sm-4 control-label">Time to wait</label>
+				<label for="wait_time" class="col-sm-4 control-label">Minutes to wait</label>
 				<div class="col-sm-8">
-					<div class="input-group">
-
-						{!! Form::text('duration', $faucet->duration, ['class'=>'form-control','id'=>'duration','placeholder'=>'Time']) !!}
-
-						<div class="input-group-btn">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span id="time" unit="{!! $faucet->time_unit !!}">{!! $time_units[$faucet->time_unit] !!}</span> <span class="caret"></span>
-							</button>
-
-							<ul class="dropdown-menu dropdown-menu-right time-units">
-
-							@foreach( $time_units as $unit => $unit_name )
-								<li unit="{!! $unit !!}">{!! $unit_name !!}</li>
-							@endforeach
-
-							</ul>
-						</div>
-
-					</div>
+					{!! Form::text('duration', $faucet->duration, ['class'=>'form-control','id'=>'duration','placeholder'=>'Time']) !!}
 				</div>
 			</div>
 		</div>
@@ -122,22 +104,14 @@ $(document).ready(function(){
 
 	faucet_id = {!! $faucet->id !!};
 
-	$("ul.time-units li").click(function(event){
-		$("#time").html($(this).html());
-		$("#time").attr("unit",$(this).attr("unit"));
-	});
-
 	$("#btn_add").click(function(event){
 		faucet_id = 0;
 
 		$("#url").val("");
 		$("#info").val("");
-		$("#duration").val(0);
+		$("#duration").val(60);
 		$("#priority").val(1);
 		$("#faucet_id").html("New faucet");
-
-		$("#time").attr("unit","m");
-		$("#time").html("{{ $time_units['m'] }}");
 
 		$("#url").focus();
 	});

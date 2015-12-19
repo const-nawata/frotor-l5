@@ -18,14 +18,23 @@
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->updated)) !!}</span></td>
-		<td id="act_after_td" class="input-control-td"><span class="lbl-inp">Show after&nbsp;</span>
-			{!! Form::text('cduration',$faucet->duration,['id'=>'cduration','class'=>'txt-inp']) !!} <span id="time_unit_name">{!! $time_units[$faucet->time_unit] !!}</span>
+
+		<td id="act_after_td" class="duration-td">
+			<div class="input-group">
+				<span class="input-group-addon">Minutes to wait&nbsp;</span>
+				{!! Form::text('cduration',$faucet->duration,['id'=>'cduration','class'=>'form-control']) !!}
+				<span class="input-group-btn">
+		        	{!! Form::button('',['id'=>'save_duration_btn','class'=>'btn btn-default glyphicon glyphicon-floppy-disk save-btn','title'=>'Save']) !!}
+				</span>
+			</div>
 			{!! Form::hidden('oduration',$faucet->duration,['id'=>'oduration']) !!}
-			{!! Form::hidden('time_unit',$faucet->time_unit,['id'=>'time_unit']) !!}
 		</td>
 
-		<td id="priority_td" class="input-control-td"><span class="lbl-inp">Priority&nbsp;</span>
-			{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'txt-inp']) !!}
+		<td id="priority_td" class="priority-td">
+			<div class="input-group">
+				<span class="input-group-addon">Priority&nbsp;</span>
+				{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'form-control']) !!}
+			</div>
 		</td>
 @else
 		<td class="no-active-td">&#8212; NO ACTIVE FAUCETS &#8212;</td>
@@ -91,8 +100,13 @@ $(document).ready(function(){
 				window.location="/set/"+faucet_id;
 				break;
 
+			case "save_duration_btn":
+				$('#faucetForm').submit();
+				break;
+
 			default:
-		}
+				alert("Undefind button (link). Button id: "+btn_id);
+		} //
 	});
 
 	$('#faucetForm').submit(function(event){

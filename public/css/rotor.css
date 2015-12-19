@@ -2,10 +2,16 @@
 
 html, body{
 	height: 99.82%;
-	background-color: #d8eff1;
+	background-color: #e3f3f4;
 	margin: 0;
 	padding: 0;
 	color: #000;
+}
+
+div.ui-dialog span.error-ico{
+	float:left; 
+	margin:0 15px 0 0;
+	font-size:20px;
 }
 
 .ui-widget-overlay{
@@ -24,14 +30,6 @@ html, body{
 	color: #804000;
 	margin-bottom: 100px;
 }
-
-/*
-.gly-flip-horizontal{
-	transform: scale(-1, 1);
-	-o-transform: scale(-1);
-	-o-transform-origin: left top;
-}
-*/
 
 .dialog-standard .ui-dialog-titlebar-close{
   display: none;
@@ -88,8 +86,6 @@ div.index-heard *{
 	padding: 0 5px 0 30px
 }
 
-
-
 td.last-payout-txt, td.last-payout-txt *{
 	font-size: 12px;
 	vertical-align: middle;
@@ -103,15 +99,35 @@ td.last-payout-txt{
 	width: 180px;
 }
 
-.lbl-inp{
-	font-size: 14px;
-	font-weight: bold;
-}
-.input-control-td{
+.duration-td, .priority-td{
 	white-space: nowrap;
-	width: 200px;
 	padding-right: 20px;
 	padding-left: 20px;
+}
+
+.duration-td{
+	width: 280px;
+}
+.priority-td{
+	width: 200px;
+}
+td.duration-td .save-btn{
+	padding: 6px 2px;
+	background-color: #eee;
+}
+table.main-tbl input{
+	text-align: right;
+	font-size: 18px;
+	height: 29px;
+}
+
+table.main-tbl .glyphicon{
+	top: 0;
+	height: 29px;
+	background-color: #dedeed;
+}
+table.main-tbl .glyphicon:HOVER{
+	background-color: #a8a8d0;
 }
 table.main-tbl td.no-active-td{
 	width: 1455px;	
@@ -120,17 +136,6 @@ table.main-tbl td.no-active-td{
 	letter-spacing: 5px;
 	color: #e60073;
 	text-align: center;
-}
-
-.input-control-td .txt-inp{
-	padding: 0 3px 0 3px;
-	font-size: 18px;
-	width: 100px;
-	text-align: right;
-	border: 1px solid #ccc;
-	border-radius: 2px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    color: #555;
 }
 
 .num-info-td{

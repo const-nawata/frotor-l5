@@ -29,10 +29,12 @@ class Faucet extends Model{
     	];
 
 	private static function applyTimeUnit( $faucet ){
-	   	switch($faucet->time_unit){
-    		case 'h': $faucet->duration = $faucet->duration / 3600; break;
-    		case 'm': $faucet->duration = $faucet->duration / 60; break;
-    	}
+// 	   	switch($faucet->time_unit){
+//     		case 'h': $faucet->duration = $faucet->duration / 3600; break;
+//     		case 'm': $faucet->duration = $faucet->duration / 60; break;
+//     	}
+
+    	$faucet->duration = $faucet->duration / 60;
 
     	return $faucet;
 	}
@@ -43,7 +45,7 @@ class Faucet extends Model{
 		$faucet->url= $faucet->url.'?'.$faucet->query;
 		return self::applyTimeUnit( $faucet );
 	}
-//______________________________________________________________________________   TRUE
+//______________________________________________________________________________
 
 
 	public static function getNullFoucet(){
@@ -86,7 +88,7 @@ class Faucet extends Model{
 	public static function updateUntil( $data ){
 
 		$data_new	= [
-			'until'		=> date( 'Y-m-d H:i:s', strtotime('+'.$data['cduration'].' '.self::$time_unit_names[$data['time_unit']] )),
+			'until'		=> date( 'Y-m-d H:i:s', strtotime('+'.$data['cduration'].' minute' )),
 			'priority'	=> $data['priority']
 		];
 

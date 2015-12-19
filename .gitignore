@@ -5,3 +5,4 @@
 .project
 .settings/
 composer.lock
+app/Http/Requests/SaveFaucetRequest.php

@@ -1,6 +1,6 @@
 var faucet_id=0
 	,faucet_url	= ""
-	,error_ico	= "<span class='glyphicon glyphicon-exclamation-sign' style='float:left; margin:0 15px 0 0;font-size:20px;'></span>"
+	,error_ico	= "<span class='glyphicon glyphicon-exclamation-sign error-ico'></span>"
 ;
 
 /**
@@ -90,12 +90,13 @@ function loadFaucet(){
 }
 //______________________________________________________________________________
 
-function postFaucet(fUrl,btnId){
+function postFaucet(fUrl,btnId){//	Index page
 	var action;
 
 	switch( btnId ){
 		case "next_btn": action = "next"; break;
 		case "disable_btn": action = "disable"; break;
+		case "save_duration_btn": action = "save_duration"; break;
 	}
 
 	$.ajax({
@@ -113,7 +114,10 @@ function postFaucet(fUrl,btnId){
 
 		success: function(faucet){
 			setFaucetInfo(faucet);
-			loadFaucet();
+
+			(action != "save_duration")
+				? loadFaucet()
+				: inform( "Operation result", faucet.message, "cduration" );
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
@@ -136,9 +140,8 @@ function postDashboardData(fUrl){
 		data:{
 			"id":		faucet_id,
 			"url":		$("#url").val(),
+			"duration":	$("#duration").val()*60,
 			"info":		$("#info").val(),
-			"duration":	$("#duration").val(),
-			"time_unit":$("#time").attr("unit"),
 			"priority":	$("#priority").val()
 		},
 
