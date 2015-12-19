@@ -109,12 +109,14 @@ class Faucet extends Model{
 	}
 //______________________________________________________________________________
 
-	public static function disableFaucet( $id ){
+	public static function disableFaucet( $data ){
+
 		$data_new	= [
-			'isactive'	=> FALSE
+			'isactive'	=> FALSE,
+			'priority'	=> $data['priority']
 		];
 
-		$faucet	= self::where( 'id', $id )->update( $data_new );
+		$faucet	= self::where( 'id', $data['prev_faucet_id'] )->update( $data_new );
 	}
 //______________________________________________________________________________
 

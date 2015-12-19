@@ -43,7 +43,7 @@ class IndexController extends Controller{
 
 		switch( $data['action'] ){
 			case 'next':	Faucet::updateUntil( $data ); break;
-			case 'disable':	Faucet::disableFaucet( $data['prev_faucet_id'] ); break;
+			case 'disable':	Faucet::disableFaucet( $data ); break;
 		}
 
 		$faucet	= Faucet::firstReady();
@@ -125,35 +125,5 @@ class IndexController extends Controller{
     	return Response::json( ['message'=>'All faucets reset to current date!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________
-
-
-//TODO: Debug method
-//     public function setDomain(){
-
-//     	$faicets	= Faucet::orderBy('domain')->get();
-//     	foreach( $faicets  as $faicet ){
-//     		$url	= $faicet->domain;
-
-// //     		$domain	= parse_url( $url, PHP_URL_SCHEME ).'://'.parse_url( $url, PHP_URL_HOST )
-// //     		;
-
-// //     		$path	= parse_url( $url, PHP_URL_PATH ).parse_url( $url, PHP_URL_QUERY );
-
-//     		$data	= [
-//     			'domain'	=> parse_url( $url, PHP_URL_SCHEME ).'://'.parse_url( $url, PHP_URL_HOST ).parse_url( $url, PHP_URL_PATH ),
-//     			'path'		=> parse_url( $url, PHP_URL_QUERY )
-//     		];
-
-//     		$result	= Faucet::where( 'id', $faicet->id )->update( $data );
-
-
-// //     		echo "domain: ".$domain.' -- '.$path.'<br>';
-
-
-//     	}
-
-
-
-//     }
 
 }//	Class end
