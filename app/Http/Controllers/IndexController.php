@@ -11,15 +11,18 @@ use App\Http\Requests\ResetAllRequest;
 class IndexController extends Controller{
 
     public function getIndex(){
+    	(!Session::has('order')) ? Session::put( 'order', 'desc' ):NULL;
+
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
-    	$faucet		= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
+		$faucet		= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
     	$count		= Faucet::countFaucets();
 
     	return view( 'index', [
     		'faucet'		=> $faucet,
     		'n_all'			=> $count['n_all'],
     		'n_act'			=> $count['n_act'],
-    		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2')
+    		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2'),
+    		'order'			=> Session::get( 'order' )
     	]);
     }
 //______________________________________________________________________________
@@ -51,6 +54,10 @@ class IndexController extends Controller{
 				$faucet	= Faucet::find( $data['prev_faucet_id'] );
 				$message	= 'New duration successfully saved.';
 				break;
+
+			case 'change_order':
+				Session::put( 'order', $data['order'] );
+				return Response::json([]);
 		}
 
 		$count	= Faucet::countFaucets();

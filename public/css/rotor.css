@@ -109,9 +109,9 @@ td.last-payout-txt{
 	width: 280px;
 }
 .priority-td{
-	width: 200px;
+	width: 220px;
 }
-td.duration-td .save-btn{
+td.duration-td .save-btn, td.priority-td .order-btn{
 	padding: 6px 2px;
 	background-color: #eee;
 }

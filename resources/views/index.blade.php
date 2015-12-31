@@ -34,6 +34,10 @@
 			<div class="input-group">
 				<span class="input-group-addon">Priority&nbsp;</span>
 				{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'form-control']) !!}
+				{!! Form::hidden('order',$order,['id'=>'order']) !!}
+				<span class="input-group-btn">
+		        	{!! Form::button('',['id'=>'change_order_btn','class'=>'btn btn-default glyphicon glyphicon-arrow-'.($order=='asc'?'up':'down').' order-btn','title'=>'Set order '.($order!='asc'?'ascended':'descended')]) !!}
+				</span>
 			</div>
 		</td>
 @else
@@ -73,7 +77,8 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var btn_id;
+	var btn_id
+	;
 
 	faucet_id = {!! $faucet->id !!};
 	faucet_url = "{!! $faucet->url !!}";
@@ -101,6 +106,27 @@ $(document).ready(function(){
 				break;
 
 			case "save_duration_btn":
+				$('#faucetForm').submit();
+				break;
+
+			case "change_order_btn":
+
+				if($('#order').val()=='asc'){
+					$('#order').val('desc');
+
+					$('#change_order_btn')
+						.removeClass('glyphicon-arrow-up')
+						.addClass('glyphicon-arrow-down')
+						.attr("title","Set order ascended");
+				}else{
+					$('#order').val('asc');
+
+					$('#change_order_btn')
+					.removeClass('glyphicon-arrow-down')
+					.addClass('glyphicon-arrow-up')
+					.attr("title","Set order descended");
+				}
+
 				$('#faucetForm').submit();
 				break;
 

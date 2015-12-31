@@ -2,6 +2,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Session;
 
 class Faucet extends Model{
 
@@ -69,7 +70,7 @@ class Faucet extends Model{
 		$faucet	= self::select()
 			->where('isactive',TRUE)
 			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
-			->orderBy('priority', 'desc')
+			->orderBy('priority', Session::get( 'order' ))
 			->first();
 
 		if( $faucet == NULL ){

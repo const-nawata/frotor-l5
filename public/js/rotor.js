@@ -94,9 +94,10 @@ function postFaucet(fUrl,btnId){//	Index page
 	var action;
 
 	switch( btnId ){
-		case "next_btn": action = "next"; break;
-		case "disable_btn": action = "disable"; break;
-		case "save_duration_btn": action = "save_duration"; break;
+		case "next_btn":			action = "next"; break;
+		case "disable_btn":			action = "disable"; break;
+		case "save_duration_btn":	action = "save_duration"; break;
+		case "change_order_btn":	action = "change_order"; break;
 	}
 
 	$.ajax({
@@ -104,20 +105,35 @@ function postFaucet(fUrl,btnId){//	Index page
 		dataType: "JSON",
 		url: fUrl,
 		data:{
-			"action":action
+			"action":			action
 			,"prev_faucet_id":	faucet_id
 			,"cduration":		$("#cduration").val()
 			,"oduration":		$("#oduration").val()
 			,"time_unit":		$("#time_unit").val()
 			,"priority":		$("#priority").val()
+			,"order":			$("#order").val()
 		},
 
 		success: function(faucet){
-			setFaucetInfo(faucet);
+			var field = "";
 
-			(action != "save_duration")
-				? loadFaucet()
-				: inform( "Operation result", faucet.message, "cduration" );
+			switch(action){
+				case 'save_duration':
+					field	= "cduration";
+					setFaucetInfo(faucet);
+					break;
+
+				case 'next':
+				case 'disable':
+					setFaucetInfo(faucet);
+					loadFaucet();
+					break;
+			}
+
+			if( typeof faucet.message !== "undefined" && faucet.message != "" )
+				inform( "Operation result", faucet.message, field );
+
+
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
