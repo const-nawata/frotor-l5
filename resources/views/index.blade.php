@@ -132,7 +132,7 @@ $(document).ready(function(){
 
 			default:
 				alert("Undefind button (link). Button id: "+btn_id);
-		} //
+		}
 	});
 
 	$('#faucetForm').submit(function(event){

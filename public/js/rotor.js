@@ -41,22 +41,28 @@ function affirm( title, message, callback ){
 	    .dialog( "option", "title", title )
 		.dialog( "option", "buttons",[
 			{
-				text: "Yes",
-				click: function(){
+				"text": "Yes",
+				"click": function(){
 					$(this).dialog("close");
 					(typeof callback != "undefined" ) ? callback() : null;
 				}
+				,"id": "aff_yes_btn"
 			},
 
 			{
-				text: "No",
-				click: function(){
+				"text": "No",
+				"click": function(){
 					$(this).dialog("close");
 				}
+				,"id": "aff_no_btn"
+
 			}
 		])
 		.html( message )
 		.dialog("open");
+
+		$("#aff_no_btn").focus()
+		;
 }
 //______________________________________________________________________________
 
@@ -115,7 +121,7 @@ function postFaucet(fUrl,btnId){//	Index page
 		},
 
 		success: function(faucet){
-			var field = "cduration";
+			var field = "faucet_id";
 
 			switch(action){
 				case 'save_duration':
@@ -132,11 +138,6 @@ function postFaucet(fUrl,btnId){//	Index page
 
 			if( typeof faucet.message !== "undefined" && faucet.message != "" )
 				inform( "Operation result", faucet.message, field );
-
-			else
-				 $("#"+field).focus();
-
-
     	},
 
     	error: function(jqXHR, textStatus, errorThrown){
