@@ -115,7 +115,7 @@ function postFaucet(fUrl,btnId){//	Index page
 		},
 
 		success: function(faucet){
-			var field = "";
+			var field = "cduration";
 
 			switch(action){
 				case 'save_duration':
@@ -132,6 +132,9 @@ function postFaucet(fUrl,btnId){//	Index page
 
 			if( typeof faucet.message !== "undefined" && faucet.message != "" )
 				inform( "Operation result", faucet.message, field );
+
+			else
+				 $("#"+field).focus();
 
 
     	},
