@@ -43,7 +43,7 @@ class Faucet extends Model{
 
 	public static function find( $id, $columns = ['*'] ){
 		$faucet		= parent::find( $id, $columns );
-		$faucet->url= $faucet->url.'?'.$faucet->query;
+		$faucet->url= $faucet->url.($faucet->query != '' ? '?'.$faucet->query : '');
 		return self::applyTimeUnit( $faucet );
 	}
 //______________________________________________________________________________
