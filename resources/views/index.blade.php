@@ -19,6 +19,17 @@
 
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->updated)) !!}</span></td>
 
+		<td id="priority_td" class="priority-td">
+			<div class="input-group">
+				<span class="input-group-addon">Priority&nbsp;</span>
+				{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'form-control']) !!}
+				{!! Form::hidden('order',$order,['id'=>'order']) !!}
+				<span class="input-group-btn">
+		        	{!! Form::button('',['id'=>'change_order_btn','class'=>'btn btn-default glyphicon glyphicon-arrow-'.($order=='asc'?'up':'down').' order-btn','title'=>'Set order '.($order!='asc'?'ascended':'descended')]) !!}
+				</span>
+			</div>
+		</td>
+
 		<td id="act_after_td" class="duration-td">
 			<div class="input-group">
 				<span class="input-group-addon">Minutes to wait&nbsp;</span>
@@ -30,16 +41,6 @@
 			{!! Form::hidden('oduration',$faucet->duration,['id'=>'oduration']) !!}
 		</td>
 
-		<td id="priority_td" class="priority-td">
-			<div class="input-group">
-				<span class="input-group-addon">Priority&nbsp;</span>
-				{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'form-control']) !!}
-				{!! Form::hidden('order',$order,['id'=>'order']) !!}
-				<span class="input-group-btn">
-		        	{!! Form::button('',['id'=>'change_order_btn','class'=>'btn btn-default glyphicon glyphicon-arrow-'.($order=='asc'?'up':'down').' order-btn','title'=>'Set order '.($order!='asc'?'ascended':'descended')]) !!}
-				</span>
-			</div>
-		</td>
 @else
 		<td class="no-active-td">&#8212; NO ACTIVE FAUCETS &#8212;</td>
 @endif

@@ -56,9 +56,9 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
-				<label for="wait_time" class="col-sm-4 control-label">Minutes to wait</label>
+				<label for="wait_time" class="col-sm-4 control-label">Priority</label>
 				<div class="col-sm-8">
-					{!! Form::text('duration', $faucet->duration, ['class'=>'form-control','id'=>'duration','placeholder'=>'Time']) !!}
+					{!! Form::text('priority', $faucet->priority, ['class'=>'form-control','id'=>'priority','placeholder'=>'Priority']) !!}
 				</div>
 			</div>
 		</div>
@@ -68,9 +68,9 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
-				<label for="wait_time" class="col-sm-4 control-label">Priority</label>
+				<label for="wait_time" class="col-sm-4 control-label">Minutes to wait</label>
 				<div class="col-sm-8">
-					{!! Form::text('priority', $faucet->priority, ['class'=>'form-control','id'=>'priority','placeholder'=>'Priority']) !!}
+					{!! Form::text('duration', $faucet->duration, ['class'=>'form-control','id'=>'duration','placeholder'=>'Time']) !!}
 				</div>
 			</div>
 		</div>
