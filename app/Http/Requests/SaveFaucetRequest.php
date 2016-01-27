@@ -22,7 +22,8 @@ class SaveFaucetRequest extends Request {
 	public function rules(){
 		return [
 			'url'		=> 'required',
-			'duration'	=> 'required|numeric'
+			'duration'	=> 'required|numeric',
+			'bandays'	=> 'numeric'
 		];
 	}
 

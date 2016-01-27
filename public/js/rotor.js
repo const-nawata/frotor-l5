@@ -162,7 +162,8 @@ function postDashboardData(fUrl){
 			"url":		$("#url").val(),
 			"duration":	$("#duration").val()*60,
 			"info":		$("#info").val(),
-			"priority":	$("#priority").val()
+			"priority":	$("#priority").val(),
+			"bandays":	$("#bandays").val()
 		},
 
 		success: function(data){

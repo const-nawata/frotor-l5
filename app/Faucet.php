@@ -18,7 +18,8 @@ class Faucet extends Model{
 		'until',
 		'isactive',
 		'priority',
-		'updated'
+		'updated',
+		'ban_until'
 	];
 
 	public $timestamps  = FALSE;
@@ -69,7 +70,8 @@ class Faucet extends Model{
 
 		$faucet	= self::select()
 			->where('isactive',TRUE)
-			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
+			->where('isactive',TRUE)
+			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0 AND TIMESTAMPDIFF(SECOND,ban_until,CURRENT_TIMESTAMP())>=0')
 			->orderBy('priority', Session::get( 'order' ))
 			->first();
 

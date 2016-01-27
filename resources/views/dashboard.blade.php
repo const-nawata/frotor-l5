@@ -80,6 +80,18 @@
 	<div class="row">
 		<div class="col-sm-8">
 			<div class="form-group">
+				<label for="wait_time" class="col-sm-4 control-label">Days to ban</label>
+				<div class="col-sm-8">
+					{!! Form::text('bandays', $faucet->bandays, ['class'=>'form-control','id'=>'bandays','placeholder'=>'Number of days']) !!}
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<div class="btn-group pull-right" role="group">
 						{!! Form::submit( 'Save', ['class'=>'btn btn-default']) !!}
@@ -99,8 +111,6 @@
 @section('js_extra')
 <script type="text/javascript">
 $(document).ready(function(){
-
-
 
 	faucet_id = {!! $faucet->id !!};
 

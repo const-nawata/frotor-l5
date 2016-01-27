@@ -7,6 +7,7 @@ use App\Http\Requests\ActionFaucetRequest;
 use App\Http\Requests\SaveFaucetRequest;
 use App\Http\Requests\EnableAllRequest;
 use App\Http\Requests\ResetAllRequest;
+use DateTime;
 
 class IndexController extends Controller{
 
@@ -30,6 +31,12 @@ class IndexController extends Controller{
     public function getDashboard( $id ){
     	Session::put( 'faucet_id', $id );
     	$faucet	= (bool)$id ? Faucet::find( $id ) : Faucet::getNullFoucet();
+
+		$dt_now = new DateTime( date('Y-m-d') );
+		$dt_ban = new DateTime( date('Y-m-d', strtotime($faucet->ban_until)) );
+		$diff	= $dt_now->diff( $dt_ban, FALSE );
+		$faucet->bandays	= $diff->invert ? 0 : $diff->d;
+
     	return view( 'dashboard',['faucet' => $faucet] );
     }
 //______________________________________________________________________________
@@ -93,14 +100,15 @@ class IndexController extends Controller{
     }
 
     public function postSaveFaucet( SaveFaucetRequest $request ){
-
-
-
-
     	$data	= $request->all();
 
     	$id	= $data['id'];
+
+    	$data['bandays'] > 0
+    		? $data['ban_until'] = date('Y-m-d',strtotime('+'.$data['bandays'].' day')).' 00:00:00':NULL;
+
     	unset($data['id']);
+    	unset($data['bandays']);
 
     	try{
 	    	if( $id > 0 ){
