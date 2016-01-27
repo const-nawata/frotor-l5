@@ -65,13 +65,15 @@ class Faucet extends Model{
 			return $faucet;
 	}
 
+	private static function getActiveFaucetsObj(){
+		return self::select()
+			->where('isactive',TRUE)
+			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0 AND TIMESTAMPDIFF(SECOND,ban_until,CURRENT_TIMESTAMP())>=0');
+	}
 
 	public static function firstReady(){
 
-		$faucet	= self::select()
-			->where('isactive',TRUE)
-			->where('isactive',TRUE)
-			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0 AND TIMESTAMPDIFF(SECOND,ban_until,CURRENT_TIMESTAMP())>=0')
+		$faucet	= self::getActiveFaucetsObj()
 			->orderBy('priority', Session::get( 'order' ))
 			->first();
 
@@ -105,11 +107,7 @@ class Faucet extends Model{
 
     	return [
     		'n_all'	=> self::all()->count(),
-
-    		'n_act'	=> self::select()
-				->where('isactive',TRUE)
-				->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0')
-				->count()
+    		'n_act'	=> self::getActiveFaucetsObj()->count()
     	];
 	}
 //______________________________________________________________________________
