@@ -11,6 +11,14 @@ use DateTime;
 
 class IndexController extends Controller{
 
+
+	private static function getLastPayInfo( $faucet ){
+		$updated_mk	= strtotime($faucet->updated);
+		$dt_now		= new DateTime(date('Y-m-d'));
+		$dt_payed	= new DateTime(date( 'Y-m-d', $updated_mk ));
+		return date( 'd-m-Y', $updated_mk ).' ('.$dt_now->diff( $dt_payed )->days.')';
+	}
+
     public function getIndex(){
     	(!Session::has('order')) ? Session::put( 'order', 'desc' ):NULL;
 
@@ -20,6 +28,7 @@ class IndexController extends Controller{
 
     	return view( 'index', [
     		'faucet'		=> $faucet,
+    		'last_pay'		=> self::getLastPayInfo( $faucet ),
     		'n_all'			=> $count['n_all'],
     		'n_act'			=> $count['n_act'],
     		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2'),
@@ -75,7 +84,7 @@ class IndexController extends Controller{
     		'duration'	=> $faucet->duration,
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
-    		'last_pay'	=> date('d-m-Y', strtotime( $faucet->updated )),
+    		'last_pay'	=> self::getLastPayInfo( $faucet ),
     		'n_all'	=> $count['n_all'],
     		'n_act'	=> $count['n_act']
 		];

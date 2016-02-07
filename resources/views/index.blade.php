@@ -17,7 +17,7 @@
 
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 
-		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! date('d-m-Y', strtotime($faucet->updated)) !!}</span></td>
+		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! $last_pay !!}</span></td>
 
 		<td id="priority_td" class="priority-td">
 			<div class="input-group">
