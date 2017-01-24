@@ -31,13 +31,7 @@ class Faucet extends Model{
     	];
 
 	private static function applyTimeUnit( $faucet ){
-// 	   	switch($faucet->time_unit){
-//     		case 'h': $faucet->duration = $faucet->duration / 3600; break;
-//     		case 'm': $faucet->duration = $faucet->duration / 60; break;
-//     	}
-
     	$faucet->duration = $faucet->duration / 60;
-
     	return $faucet;
 	}
 //______________________________________________________________________________

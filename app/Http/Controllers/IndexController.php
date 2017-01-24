@@ -21,10 +21,14 @@ class IndexController extends Controller{
 
     public function getIndex(){
     	(!Session::has('order')) ? Session::put( 'order', 'desc' ):NULL;
-
     	$faucet_id	= Session::pull( 'faucet_id', 0 );
-		$faucet		= (bool)$faucet_id ? Faucet::find( $faucet_id ) : Faucet::firstReady();
-    	$count		= Faucet::countFaucets();
+    	$faucet		= Faucet::firstReady();
+    	$curr_faucet= ((bool)$faucet_id) ? Faucet::find( $faucet_id ) : $faucet;
+
+		if( $faucet->id != 0 || $curr_faucet->id != 0 )
+			$faucet		= strtotime($curr_faucet->ban_until) > strtotime('now') ? $faucet : $curr_faucet;
+
+		$count			= Faucet::countFaucets();
 
     	return view( 'index', [
     		'faucet'		=> $faucet,

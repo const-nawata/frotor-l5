@@ -67,7 +67,6 @@ function affirm( title, message, callback ){
 //______________________________________________________________________________
 
 function setFaucetInfo(faucet){
-
 	faucet_id	= faucet.id;
 	faucet_url	= faucet.url;
 
@@ -122,6 +121,11 @@ function postFaucet(fUrl,btnId){//	Index page
 
 		success: function(faucet){
 			var field = "faucet_id";
+
+			if(faucet.id==0){
+				window.location	= "/";
+				return;
+			}
 
 			switch(action){
 				case 'save_duration':
