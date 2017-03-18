@@ -85,17 +85,22 @@ function setFaucetInfo(faucet){
 }
 //______________________________________________________________________________
 
-function loadFaucet(){
-	$("#main_fraim").attr("src", faucet_url );
+function loadFaucet( isNewTab ){
+	if( isNewTab ){
+		window.open( faucet_url, "_blank" );
+		return;
+	}
+	
+	$("#main_fraim").attr( "src", faucet_url );
 
-	$("#load_btn")
-		.removeClass("glyphicon-play")
-		.addClass("glyphicon-repeat")
-		.attr("title","Refresh");
+	$( "#load_btn" )
+		.removeClass( "glyphicon-play" )
+		.addClass( "glyphicon-repeat" )
+		.attr( "title","Refresh" );
 }
 //______________________________________________________________________________
 
-function postFaucet(fUrl,btnId){//	Index page
+function postFaucet( fUrl,btnId ){//	Index page
 	var action;
 
 	switch( btnId ){
@@ -136,7 +141,7 @@ function postFaucet(fUrl,btnId){//	Index page
 				case 'next':
 				case 'disable':
 					setFaucetInfo(faucet);
-					loadFaucet();
+					loadFaucet(false);
 					break;
 			}
 

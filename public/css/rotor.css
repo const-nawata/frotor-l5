@@ -111,10 +111,6 @@ td.last-payout-txt{
 .priority-td{
 	width: 220px;
 }
-td.duration-td .save-btn, td.priority-td .order-btn{
-	padding: 6px 2px;
-	background-color: #eee;
-}
 table.main-tbl input{
 	text-align: right;
 	font-size: 18px;
@@ -122,13 +118,30 @@ table.main-tbl input{
 }
 
 table.main-tbl .glyphicon{
-	top: 0;
-	height: 29px;
+ 	top: 0;  
 	background-color: #dedeed;
 }
 table.main-tbl .glyphicon:HOVER{
 	background-color: #a8a8d0;
 }
+td.duration-td .save-btn, td.priority-td .order-btn{
+	padding: 6px 2px;
+	background-color: #eee;
+	height: 29px;
+}
+
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn{
+	background-color: #92bbe4;
+	border-color: #5f82b6;
+}
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn:HOVER{
+	background-color: #665eb7;
+}
+
+table.main-tbl td.faucet-id-td .btn-group.btn-group-xs{
+	bottom: 3px;
+}
+
 table.main-tbl td.no-active-td{
 	width: 1455px;	
 	font-size: 22px;

@@ -13,7 +13,12 @@
 	<tr>
 
 @if( (bool)$faucet->id )
-		<td class="faucet-id-td">Id: <span class="badge" id="faucet_id">{!! $faucet->id !!}</td>
+		<td class="faucet-id-td">
+			Id: <div class="badge" id="faucet_id">{!! $faucet->id !!}</div>
+			<div class="btn-group btn-group-xs" role="group" aria-label="Faucet id">
+				{!! Form::button('',['id'=>'new_tab_btn','class'=>'btn btn-default glyphicon glyphicon-new-window','title'=>'Open faucet apart']) !!}
+			</div>
+		</td>
 
 		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 
@@ -25,7 +30,9 @@
 				{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'form-control']) !!}
 				{!! Form::hidden('order',$order,['id'=>'order']) !!}
 				<span class="input-group-btn">
+
 		        	{!! Form::button('',['id'=>'change_order_btn','class'=>'btn btn-default glyphicon glyphicon-arrow-'.($order=='asc'?'up':'down').' order-btn','title'=>'Set order '.($order!='asc'?'ascended':'descended')]) !!}
+
 				</span>
 			</div>
 		</td>
@@ -52,7 +59,7 @@
 		</td>
 
 		<td class='tool-btn-td'>
-			<div class="btn-group {!! $btn_grp_css !!} pull-right" role="group">
+			<div class="btn-group btn-group-sm {!! $btn_grp_css !!} pull-right" role="group" aria-label="Faucet manipulate">
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon-wrench','title'=>'Settings']) !!}
 
 @if( (bool)$faucet->id )
@@ -88,6 +95,15 @@ $(document).ready(function(){
 		btn_id	= $(this).attr("id");
 
 		switch( btn_id ){
+
+			case "load_btn":
+				loadFaucet(false);
+				break;
+
+			case "new_tab_btn":
+				loadFaucet(true);
+				break;
+
 			case "next_btn":
 				$('#faucetForm').submit();
 				break;
@@ -96,10 +112,6 @@ $(document).ready(function(){
 				affirm( "Confirmation required", "Are you sure you want to disable this faucet?", function(){
 					$('#faucetForm').submit();
 				});
-				break;
-
-			case "load_btn":
-				loadFaucet();
 				break;
 
 			case "settings_btn":
