@@ -9,14 +9,12 @@ class Faucet extends Model{
 	protected $table = 'faucets';
 
 	protected $fillable = [
-// 		'url',
 		'domain',
 		'path',
 		'info',
 		'duration',
 		'time_unit',
 		'until',
-		'isactive',
 		'priority',
 		'updated',
 		'ban_until'
@@ -61,7 +59,6 @@ class Faucet extends Model{
 
 	private static function getActiveFaucetsObj(){
 		return self::select()
-			->where('isactive',TRUE)
 			->whereRaw('TIMESTAMPDIFF(SECOND,until,CURRENT_TIMESTAMP())>=0 AND TIMESTAMPDIFF(SECOND,ban_until,CURRENT_TIMESTAMP())>=0');
 	}
 

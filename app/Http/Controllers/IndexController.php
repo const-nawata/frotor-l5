@@ -5,7 +5,6 @@ use App\Faucet;
 use Response;
 use App\Http\Requests\ActionFaucetRequest;
 use App\Http\Requests\SaveFaucetRequest;
-use App\Http\Requests\EnableAllRequest;
 use App\Http\Requests\ResetAllRequest;
 use DateTime;
 
@@ -65,6 +64,7 @@ class IndexController extends Controller{
 				break;
 
 			case 'tomorrow':
+
 				Faucet::updateUntilTomorrow( $data );
 				$faucet	= Faucet::firstReady();
 				break;
@@ -124,17 +124,16 @@ class IndexController extends Controller{
     	unset($data['bandays']);
 
     	try{
-	    	if( $id > 0 ){
+	    	if( $id > 0 ){//	--- Update faucet.
 	    		$data	= $this->prepareUrl( $data );
 	    		$result	= Faucet::where( 'id', $id )->update( $data );
 				return Response::json( ['error'=>FALSE, 'message'=>'Faucet successfully updated.', 'id' => $id] );
-	    	}elseif($id < 0){//	--- Delete faucet!!!
+	    	}elseif($id < 0){//	--- Delete faucet.
 	    		Session::forget('faucet_id');
 	    		$id	= -$id;
 				$result	= Faucet::where( 'id', $id )->delete();
 				return Response::json( ['message'=>'Faucet successfully deleted.', 'id' => $id] );
-	    	}else{
-				$data['isactive']	= TRUE;
+	    	}else{//	--- Add faucet.
 				$data	= $this->prepareUrl( $data );
 				$id	= Faucet::insertGetId( $data );
 				Session::put( 'faucet_id', $id );
@@ -143,13 +142,6 @@ class IndexController extends Controller{
     	}catch( \Illuminate\Database\QueryException $e){
     		return Response::json(['error'=>TRUE, 'message' => $e->errorInfo[2], 'id' => $id]);
     	}
-    }
-//______________________________________________________________________________
-
-    public function postEnableAll( EnableAllRequest $request ){
-    	$data	= $request->all();
-    	$result	= Faucet::where('isactive',FALSE)->update( ['isactive' => TRUE] );
-		return Response::json( ['message'=>'All faucets enabled!!!', 'id' => $data['id']] );
     }
 //______________________________________________________________________________
 

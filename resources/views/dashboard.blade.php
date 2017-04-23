@@ -17,7 +17,6 @@
 				<div class="col-sm-3 tools-btn">
 					<div class="btn-group btn-group-xs pull-right" role="group">
 						{!! Html::link('/','',['class'=>'btn btn-default glyphicon glyphicon-home','title'=>'Home']) !!}
-						{!! Form::button('',['id'=>'btn_all','class'=>'btn btn-default glyphicon glyphicon-ok','title'=>'Enable all']) !!}
 						{!! Form::button('',['id'=>'btn_reset','class'=>'btn btn-default glyphicon glyphicon-refresh','title'=>'Reset all untils']) !!}
 						{!! Form::button('',['id'=>'btn_add','class'=>'btn btn-default glyphicon glyphicon-plus-sign','title'=>'Add faucet']) !!}
 						{!! Form::button('',['id'=>'btn_del','class'=>'btn btn-default glyphicon glyphicon-trash','title'=>'Delete faucet']) !!}
@@ -137,11 +136,6 @@ $(document).ready(function(){
 			faucet_id = -faucet_id;
 			$('#dashboardForm').submit();
 		});
-	});
-
-	$("#btn_all").click(function(event){
-		$("#dashboardForm").attr("action","{!! url('/') !!}/enableall");
-		$('#dashboardForm').submit();
 	});
 
 	$("#btn_reset").click(function(event){

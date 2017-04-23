@@ -13,7 +13,6 @@ Route::get('showdummy', 'IndexController@getDummyPage');
 
 Route::post('faucetation', 'IndexController@postActionFaucet');
 Route::post('save', 'IndexController@postSaveFaucet');
-Route::post('enableall', 'IndexController@postEnableAll');
 Route::post('resetall', 'IndexController@postResetAll');
 
 // Route::get('setdomain', 'IndexController@setDomain');	//TODO: Debug route
