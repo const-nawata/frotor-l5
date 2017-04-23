@@ -106,10 +106,10 @@ class Faucet extends Model{
 	}
 //______________________________________________________________________________
 
-	public static function disableFaucet( $data ){
+	public static function updateUntilTomorrow( $data ){
 
 		$data_new	= [
-			'isactive'	=> FALSE,
+			'until'		=> date( 'Y-m-d 00:00:01', strtotime('+1 day' )),
 			'priority'	=> $data['priority']
 		];
 

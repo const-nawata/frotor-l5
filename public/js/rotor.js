@@ -105,7 +105,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 
 	switch( btnId ){
 		case "next_btn":			action = "next"; break;
-		case "disable_btn":			action = "disable"; break;
+		case "tomorrow_btn":		action = "tomorrow"; break;
 		case "save_duration_btn":	action = "save_duration"; break;
 		case "change_order_btn":	action = "change_order"; break;
 	}
@@ -139,7 +139,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 					break;
 
 				case 'next':
-				case 'disable':
+				case 'tomorrow':
 					setFaucetInfo(faucet);
 					loadFaucet(false);
 					break;

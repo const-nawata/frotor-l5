@@ -64,8 +64,8 @@ class IndexController extends Controller{
 				$faucet	= Faucet::firstReady();
 				break;
 
-			case 'disable':
-				Faucet::disableFaucet( $data );
+			case 'tomorrow':
+				Faucet::updateUntilTomorrow( $data );
 				$faucet	= Faucet::firstReady();
 				break;
 

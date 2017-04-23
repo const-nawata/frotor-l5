@@ -63,7 +63,7 @@
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon-wrench','title'=>'Settings']) !!}
 
 @if( (bool)$faucet->id )
-				{!! Form::button('',['id'=>'disable_btn','class'=>'btn btn-default glyphicon glyphicon-remove','title'=>'Disable']) !!}
+				{!! Form::button('',['id'=>'tomorrow_btn','class'=>'btn btn-default glyphicon glyphicon-time','title'=>'Tomorrow']) !!}
 				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-play','title'=>'Show current faucet']) !!}
 @endif
 
@@ -108,8 +108,8 @@ $(document).ready(function(){
 				$('#faucetForm').submit();
 				break;
 
-			case "disable_btn":
-				affirm( "Confirmation required", "Are you sure you want to disable this faucet?", function(){
+			case "tomorrow_btn":
+				affirm( "Confirmation required", "Are you sure to postpone this faucet untill tomorrow?", function(){
 					$('#faucetForm').submit();
 				});
 				break;
