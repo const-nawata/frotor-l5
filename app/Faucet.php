@@ -88,7 +88,7 @@ class Faucet extends Model{
 			'priority'	=> $data['priority']
 		];
 
-		($data['cduration']==$data['oduration']) ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
+		($data['action']!='next_not' && $data['cduration']==$data['oduration']) ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
 
 		$result	= self::where( 'id', $data['prev_faucet_id'] )->update( $data_new );
 	}

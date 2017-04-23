@@ -59,6 +59,7 @@ class IndexController extends Controller{
 
 		switch( $data['action'] ){
 			case 'next':
+			case 'next_not':
 				Faucet::updateUntil( $data );
 				$faucet	= Faucet::firstReady();
 				break;

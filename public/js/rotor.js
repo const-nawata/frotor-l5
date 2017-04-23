@@ -98,13 +98,14 @@ function loadFaucet( isNewTab ){
 		.addClass( "glyphicon-repeat" )
 		.attr( "title","Refresh" );
 }
-//______________________________________________________________________________
+//______________________________________________________________________________ 
 
 function postFaucet( fUrl,btnId ){//	Index page
 	var action;
 
 	switch( btnId ){
 		case "next_btn":			action = "next"; break;
+		case "next_not_btn":		action = "next_not"; break;
 		case "tomorrow_btn":		action = "tomorrow"; break;
 		case "save_duration_btn":	action = "save_duration"; break;
 		case "change_order_btn":	action = "change_order"; break;
@@ -139,6 +140,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 					break;
 
 				case 'next':
+				case 'next_not':
 				case 'tomorrow':
 					setFaucetInfo(faucet);
 					loadFaucet(false);
