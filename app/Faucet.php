@@ -66,6 +66,8 @@ class Faucet extends Model{
 
 		$faucet	= self::getActiveFaucetsObj()
 			->orderBy('priority', Session::get( 'order' ))
+			->orderByRaw( 'RAND()' )
+// 			->inRandomOrder()					//TODO: For the version >= 5.2
 			->first();
 
 		if( $faucet == NULL ){
