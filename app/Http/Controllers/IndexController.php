@@ -38,7 +38,7 @@ class IndexController extends Controller{
     		'order'			=> Session::get( 'order' ),
     		'texts'		=> [
     			'new_window'	=> 'New window',
-    			'debt_status'	=> $faucet->is_debt ? 'Unset owe' : 'Set owe'
+    			'debt_status'	=> $faucet->is_debt ? 'Unset debt status' : 'Set debt status'
     		]
     	]);
     }
@@ -63,7 +63,6 @@ class IndexController extends Controller{
 
 		switch( $data['action'] ){
 			case 'next':
-			case 'next_not':
 				Faucet::updateUntil( $data );
 				$faucet	= Faucet::firstReady();
 				break;

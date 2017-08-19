@@ -141,6 +141,9 @@ table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#debt_btn
 	background-color: #92bbe4;
 	border-color: #5f82b6;
 }
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#debt_btn{
+	background-color: #d2cb68;
+}
 table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn:HOVER{
 	background-color: #665eb7;
 }
@@ -194,15 +197,12 @@ table.faucets-info-tbl .faucet-count-td{
 
 
 table.main-tbl td.tool-btn-td div.btn4{
-	width: 170px;
+	width: 135px;
 }
 
 table.main-tbl td.tool-btn-td .btn2{
 		width: 80px;
 }
-
-
-
 
 
 div.dasboard-frotor label.control-label{

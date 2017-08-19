@@ -70,6 +70,11 @@ function affirm( title, message, callback ){
 function setFaucetInfo(faucet){
 	faucet_id	= faucet.id;
 	faucet_url	= faucet.url;
+	is_debt		= faucet.is_debt;
+	
+	(is_debt)
+		? $(".panel-heading.index-heard").addClass("debt")
+		: $(".panel-heading.index-heard").removeClass("debt");
 
 	$("#faucet_id").html(faucet_id);
 	$("#cduration").val(faucet.duration);
@@ -82,7 +87,6 @@ function setFaucetInfo(faucet){
 	$("#info").html(faucet.info);
 	$("#n_all").html(faucet.n_all);
 	$("#n_act").html(faucet.n_act);
-
 }
 //______________________________________________________________________________
 
@@ -106,7 +110,6 @@ function postFaucet( fUrl,btnId ){//	Index page
 
 	switch( btnId ){
 		case "next_btn":			action = "next"; break;
-		case "next_not_btn":		action = "next_not"; break;
 		case "tomorrow_btn":		action = "tomorrow"; break;
 		case "save_duration_btn":	action = "save_duration"; break;
 		case "change_order_btn":	action = "change_order"; break;
@@ -145,7 +148,6 @@ function postFaucet( fUrl,btnId ){//	Index page
 					break;
 
 				case 'next':
-				case 'next_not':
 				case 'tomorrow':
 					setFaucetInfo(faucet);
 					loadFaucet(false);

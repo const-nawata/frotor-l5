@@ -59,15 +59,13 @@
 
 		<td class='tool-btn-td'>
 			<div class="btn-group btn-group-sm {!! $btn_grp_css !!} pull-right" role="group" aria-label="Faucet manipulate">
-				{!! Form::button('',['id'=>'next_not_btn','class'=>'btn btn-default glyphicon glyphicon-fast-forward','title'=>'Next and not update']) !!}
 				{!! Form::button('',['id'=>'settings_btn','class'=>'btn btn-default glyphicon glyphicon-wrench','title'=>'Settings']) !!}
 
 @if( (bool)$faucet->id )
 				{!! Form::button('',['id'=>'tomorrow_btn','class'=>'btn btn-default glyphicon glyphicon-time','title'=>'Tomorrow']) !!}
 				{!! Form::button('',['id'=>'load_btn','class'=>'btn btn-default glyphicon glyphicon-play','title'=>'Show current faucet']) !!}
 @endif
-
-				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next and update']) !!}
+				{!! Form::button('',['id'=>'next_btn','class'=>'btn btn-default glyphicon glyphicon-forward','title'=>'Next faucet']) !!}
 			</div>
 		</td>
 	</tr>
@@ -107,12 +105,6 @@ $(document).ready(function(){
 
 			case "next_btn":
 				$('#faucetForm').submit();
-				break;
-
-			case "next_not_btn":
-				affirm( "Confirmation required", "Are you sure to not time update?", function(){
-					$('#faucetForm').submit();
-				});
 				break;
 
 			case "tomorrow_btn":

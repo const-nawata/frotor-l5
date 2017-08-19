@@ -91,7 +91,9 @@ class Faucet extends Model{
 			'priority'	=> $data['priority']
 		];
 
-		($data['action']!='next_not') ? $data_new['updated'] = date('Y-m-d H:i:s'):NULL;
+		$faucet	= self::find( $data['prev_faucet_id'] );
+
+		!$faucet->is_debt ? $data_new['updated'] = date('Y-m-d H:i:s') : null;
 
 		$result	= self::where( 'id', $data['prev_faucet_id'] )->update( $data_new );
 	}
