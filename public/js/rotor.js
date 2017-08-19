@@ -72,9 +72,17 @@ function setFaucetInfo(faucet){
 	faucet_url	= faucet.url;
 	is_debt		= faucet.is_debt;
 	
-	(is_debt)
-		? $(".panel-heading.index-heard").addClass("debt")
-		: $(".panel-heading.index-heard").removeClass("debt");
+//	(is_debt)
+//		? $(".panel-heading.index-heard").addClass("debt")
+//		: $(".panel-heading.index-heard").removeClass("debt");
+
+	if(is_debt){
+		$(".panel-heading.index-heard").addClass("debt");
+		$("#debt_btn").attr("title","Unset debt status");
+	}else{
+		$(".panel-heading.index-heard").removeClass("debt");
+		$("#debt_btn").attr("title","Set debt status");
+	}
 
 	$("#faucet_id").html(faucet_id);
 	$("#cduration").val(faucet.duration);

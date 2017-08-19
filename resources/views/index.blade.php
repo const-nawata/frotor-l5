@@ -16,8 +16,8 @@
 		<td class="faucet-id-td">
 			Id: <div class="badge" id="faucet_id">{!! $faucet->id !!}</div>
 			<div class="btn-group btn-group-xs" role="group" aria-label="Faucet id">
-				{!! Form::button('',['id'=>'new_tab_btn','class'=>'btn btn-default glyphicon glyphicon-new-window','title'=>$texts['new_window']]) !!}
-				{!! Form::button('',['id'=>'debt_btn','class'=>'btn btn-default glyphicon glyphicon-warning-sign','title'=>$texts['debt_status']]) !!}
+				{!! Form::button('',['id'=>'new_tab_btn','class'=>'btn btn-default glyphicon glyphicon-new-window','title'=>'New window']) !!}
+				{!! Form::button('',['id'=>'debt_btn','class'=>'btn btn-default glyphicon glyphicon-warning-sign']) !!}
 			</div>
 		</td>
 
@@ -90,6 +90,14 @@ $(document).ready(function(){
 	faucet_url = "{!! $faucet->url !!}";
 	is_debt	= {!!($faucet->is_debt ? 'true' : 'false')!!};
 
+	if(is_debt){
+		$(".panel-heading.index-heard").addClass("debt");
+		$("#debt_btn").attr("title","Unset debt status");
+	}else{
+		$(".panel-heading.index-heard").removeClass("debt");
+		$("#debt_btn").attr("title","Set debt status");
+	}
+
 	$("button").click(function(ev){
 		btn_id	= $(this).attr("id");
 
@@ -143,9 +151,17 @@ $(document).ready(function(){
 				break;
 
 			case "debt_btn":
-				(is_debt)
-					? $(".panel-heading.index-heard").removeClass("debt")
-					: $(".panel-heading.index-heard").addClass("debt");
+// 				(is_debt)
+// 					? $(".panel-heading.index-heard").removeClass("debt")
+// 					: $(".panel-heading.index-heard").addClass("debt");
+
+				if(is_debt){
+					$(".panel-heading.index-heard").removeClass("debt");
+					$("#debt_btn").attr("title","Set debt status");
+				}else{
+					$(".panel-heading.index-heard").addClass("debt");
+					$("#debt_btn").attr("title","Unset debt status");
+				}
 
 				is_debt	= !is_debt;
 

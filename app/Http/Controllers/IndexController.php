@@ -35,11 +35,7 @@ class IndexController extends Controller{
     		'n_all'			=> $count['n_all'],
     		'n_act'			=> $count['n_act'],
     		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2'),
-    		'order'			=> Session::get( 'order' ),
-    		'texts'		=> [
-    			'new_window'	=> 'New window',
-    			'debt_status'	=> $faucet->is_debt ? 'Unset debt status' : 'Set debt status'
-    		]
+    		'order'			=> Session::get( 'order' )
     	]);
     }
 //______________________________________________________________________________
