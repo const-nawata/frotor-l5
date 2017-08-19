@@ -7,7 +7,7 @@
 {!! Form::close() !!}
 
 <div class="panel panel-info main-panel-content">
-	<div class="panel-heading index-heard">
+	<div class="panel-heading index-heard {!!($faucet->is_debt ? 'debt' : '')!!}">
 
 <table class="main-tbl">
 	<tr>
@@ -90,6 +90,7 @@ $(document).ready(function(){
 
 	faucet_id = {!! $faucet->id !!};
 	faucet_url = "{!! $faucet->url !!}";
+	is_debt	= {!!($faucet->is_debt ? 'true' : 'false')!!};
 
 	$("button").click(function(ev){
 		btn_id	= $(this).attr("id");
@@ -102,10 +103,6 @@ $(document).ready(function(){
 
 			case "new_tab_btn":
 				loadFaucet(true);
-				break;
-
-			case "debt_btn":
-				$('#faucetForm').submit();
 				break;
 
 			case "next_btn":
@@ -151,6 +148,16 @@ $(document).ready(function(){
 				}
 
 				$('#faucetForm').submit();
+				break;
+
+			case "debt_btn":
+				(is_debt)
+					? $(".panel-heading.index-heard").removeClass("debt")
+					: $(".panel-heading.index-heard").addClass("debt");
+
+				is_debt	= !is_debt;
+
+				$("#faucetForm").submit();
 				break;
 
 			default:

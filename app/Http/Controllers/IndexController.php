@@ -38,7 +38,7 @@ class IndexController extends Controller{
     		'order'			=> Session::get( 'order' ),
     		'texts'		=> [
     			'new_window'	=> 'New window',
-    			'debt_status'	=> $faucet->is_owe ? 'Unset owe' : 'Set owe'
+    			'debt_status'	=> $faucet->is_debt ? 'Unset owe' : 'Set owe'
     		]
     	]);
     }
@@ -82,7 +82,7 @@ class IndexController extends Controller{
 			case 'change_debt':
 				$faucet	= Faucet::find( $data['prev_faucet_id'] );
 				$result	= Faucet::where( 'id', $data['prev_faucet_id'] )->update( ['is_debt'=>(!$faucet->is_debt) ] );
-				$faucet	= Faucet::find( $data['prev_faucet_id'] );
+				return Response::json([]);
 				break;
 
 			case 'change_order':
@@ -98,7 +98,7 @@ class IndexController extends Controller{
     		'duration'	=> $faucet->duration,
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
-			'is_owe'	=> $faucet->is_owe,
+			'is_debt'	=> $faucet->is_debt,
     		'last_pay'	=> self::getLastPayInfo( $faucet ),
     		'n_all'	=> $count['n_all'],
     		'n_act'	=> $count['n_act']

@@ -1,6 +1,7 @@
 var faucet_id=0
 	,faucet_url	= ""
 	,error_ico	= "<span class='glyphicon glyphicon-exclamation-sign error-ico'></span>"
+	,is_debt
 ;
 
 /**
@@ -141,6 +142,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 					break;
 					
 				case 'change_debt':
+					break;
 
 				case 'next':
 				case 'next_not':

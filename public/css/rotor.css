@@ -69,6 +69,10 @@ div.index-heard *{
 	color: #fff;
 }
 
+.panel-heading.debt{
+	background-color: #ff7171;
+}
+
 .main-tbl .faucet-id-td{
 	color: #000;
 	font-weight: bold;
