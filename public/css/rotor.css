@@ -138,14 +138,19 @@ table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn,
 table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#debt_btn
 {
 	top: 1px;
-	background-color: #92bbe4;
 	border-color: #5f82b6;
+}
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn{
+	background-color: #92bbe4;
 }
 table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#debt_btn{
 	background-color: #d2cb68;
 }
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#debt_btn:HOVER{
+	background-color: #b1a834;
+}
 table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn:HOVER{
-	background-color: #665eb7;
+	background-color: #5f9bd8;
 }
 
 table.main-tbl td.faucet-id-td .btn-group.btn-group-xs{
