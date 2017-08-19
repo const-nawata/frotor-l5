@@ -17,7 +17,8 @@ class Faucet extends Model{
 		'until',
 		'priority',
 		'updated',
-		'ban_until'
+		'ban_until',
+		'is_owe'
 	];
 
 	public $timestamps  = FALSE;

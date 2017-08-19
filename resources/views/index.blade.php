@@ -16,11 +16,12 @@
 		<td class="faucet-id-td">
 			Id: <div class="badge" id="faucet_id">{!! $faucet->id !!}</div>
 			<div class="btn-group btn-group-xs" role="group" aria-label="Faucet id">
-				{!! Form::button('',['id'=>'new_tab_btn','class'=>'btn btn-default glyphicon glyphicon-new-window','title'=>'Open faucet apart']) !!}
+				{!! Form::button('',['id'=>'new_tab_btn','class'=>'btn btn-default glyphicon glyphicon-new-window','title'=>$texts['new_window']]) !!}
+				{!! Form::button('',['id'=>'owe_btn','class'=>'btn btn-default glyphicon glyphicon-warning-sign','title'=>$texts['owe_status']]) !!}
 			</div>
 		</td>
 
-		<td><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
+		<td class="faucet-info-td"><div id="info" class="descr-txt">{!! $faucet->info !!}</div></td>
 
 		<td class="last-payout-txt">Last payout on <span id="last_pay">{!! $last_pay !!}</span></td>
 
@@ -103,6 +104,10 @@ $(document).ready(function(){
 
 			case "new_tab_btn":
 				loadFaucet(true);
+				break;
+
+			case "owe_btn":
+				$('#faucetForm').submit();
 				break;
 
 			case "next_btn":

@@ -130,7 +130,9 @@ td.duration-td .save-btn, td.priority-td .order-btn{
 	height: 29px;
 }
 
-table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn{
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#new_tab_btn,
+table.main-tbl td.faucet-id-td div.btn-group.btn-group-xs button#owe_btn
+{
 	top: 1px;
 	background-color: #92bbe4;
 	border-color: #5f82b6;

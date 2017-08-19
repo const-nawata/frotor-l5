@@ -98,7 +98,7 @@ function loadFaucet( isNewTab ){
 		.addClass( "glyphicon-repeat" )
 		.attr( "title","Refresh" );
 }
-//______________________________________________________________________________ 
+//______________________________________________________________________________  
 
 function postFaucet( fUrl,btnId ){//	Index page
 	var action;
@@ -109,6 +109,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 		case "tomorrow_btn":		action = "tomorrow"; break;
 		case "save_duration_btn":	action = "save_duration"; break;
 		case "change_order_btn":	action = "change_order"; break;
+		case "owe_btn":				action = "change_owe"; break;
 	}
 
 	$.ajax({
@@ -138,6 +139,8 @@ function postFaucet( fUrl,btnId ){//	Index page
 					field	= "cduration";
 					setFaucetInfo(faucet);
 					break;
+					
+				case 'change_owe':
 
 				case 'next':
 				case 'next_not':
