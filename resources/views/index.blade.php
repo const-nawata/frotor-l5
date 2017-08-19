@@ -151,17 +151,11 @@ $(document).ready(function(){
 				break;
 
 			case "debt_btn":
-// 				(is_debt)
-// 					? $(".panel-heading.index-heard").removeClass("debt")
-// 					: $(".panel-heading.index-heard").addClass("debt");
+				(is_debt)
+					? $(".panel-heading.index-heard").removeClass("debt")
+					: $(".panel-heading.index-heard").addClass("debt");
 
-				if(is_debt){
-					$(".panel-heading.index-heard").removeClass("debt");
-					$("#debt_btn").attr("title","Set debt status");
-				}else{
-					$(".panel-heading.index-heard").addClass("debt");
-					$("#debt_btn").attr("title","Unset debt status");
-				}
+				setDebtButtonTitle();
 
 				is_debt	= !is_debt;
 

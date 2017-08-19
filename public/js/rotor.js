@@ -67,23 +67,29 @@ function affirm( title, message, callback ){
 }
 //______________________________________________________________________________
 
+function setDebtButtonTitle(){
+	var title;
+	
+	title = ($(".panel-heading.index-heard").hasClass("debt"))
+		? "Unset debt status"
+		: "Set debt status";
+		
+	$("#debt_btn").attr("title",title);
+	
+}
+//______________________________________________________________________________
+
 function setFaucetInfo(faucet){
 	faucet_id	= faucet.id;
 	faucet_url	= faucet.url;
 	is_debt		= faucet.is_debt;
 	
-//	(is_debt)
-//		? $(".panel-heading.index-heard").addClass("debt")
-//		: $(".panel-heading.index-heard").removeClass("debt");
+	(is_debt)
+		? $(".panel-heading.index-heard").addClass("debt")
+		: $(".panel-heading.index-heard").removeClass("debt");
 
-	if(is_debt){
-		$(".panel-heading.index-heard").addClass("debt");
-		$("#debt_btn").attr("title","Unset debt status");
-	}else{
-		$(".panel-heading.index-heard").removeClass("debt");
-		$("#debt_btn").attr("title","Set debt status");
-	}
-
+	setDebtButtonTitle();
+	
 	$("#faucet_id").html(faucet_id);
 	$("#cduration").val(faucet.duration);
 	$("#cduration").attr("value",faucet.duration);
