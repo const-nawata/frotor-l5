@@ -1,3 +1,3 @@
 
 ALTER TABLE faucets
-  ADD COLUMN is_owe tinyint NOT NULL DEFAULT  0;
+  ADD COLUMN is_debt tinyint NOT NULL DEFAULT  0;

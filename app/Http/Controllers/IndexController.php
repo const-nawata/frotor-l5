@@ -81,7 +81,7 @@ class IndexController extends Controller{
 
 			case 'change_debt':
 				$faucet	= Faucet::find( $data['prev_faucet_id'] );
-				$result	= Faucet::where( 'id', $data['prev_faucet_id'] )->update( ['is_owe'=>(!$faucet->is_owe) ] );
+				$result	= Faucet::where( 'id', $data['prev_faucet_id'] )->update( ['is_debt'=>(!$faucet->is_debt) ] );
 				$faucet	= Faucet::find( $data['prev_faucet_id'] );
 				break;
 

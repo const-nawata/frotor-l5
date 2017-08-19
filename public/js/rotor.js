@@ -109,7 +109,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 		case "tomorrow_btn":		action = "tomorrow"; break;
 		case "save_duration_btn":	action = "save_duration"; break;
 		case "change_order_btn":	action = "change_order"; break;
-		case "debt_btn":				action = "change_debt"; break;
+		case "debt_btn":			action = "change_debt"; break;
 	}
 
 	$.ajax({
