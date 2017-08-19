@@ -109,7 +109,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 		case "tomorrow_btn":		action = "tomorrow"; break;
 		case "save_duration_btn":	action = "save_duration"; break;
 		case "change_order_btn":	action = "change_order"; break;
-		case "owe_btn":				action = "change_owe"; break;
+		case "debt_btn":				action = "change_debt"; break;
 	}
 
 	$.ajax({
@@ -140,7 +140,7 @@ function postFaucet( fUrl,btnId ){//	Index page
 					setFaucetInfo(faucet);
 					break;
 					
-				case 'change_owe':
+				case 'change_debt':
 
 				case 'next':
 				case 'next_not':

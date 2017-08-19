@@ -38,7 +38,7 @@ class IndexController extends Controller{
     		'order'			=> Session::get( 'order' ),
     		'texts'		=> [
     			'new_window'	=> 'New window',
-    			'owe_status'	=> $faucet->is_owe ? 'Unset owe' : 'Set owe'
+    			'debt_status'	=> $faucet->is_owe ? 'Unset owe' : 'Set owe'
     		]
     	]);
     }
@@ -79,7 +79,9 @@ class IndexController extends Controller{
 				$message	= 'New duration successfully saved.';
 				break;
 
-			case 'change_owe':
+			case 'change_debt':
+				$faucet	= Faucet::find( $data['prev_faucet_id'] );
+				$result	= Faucet::where( 'id', $data['prev_faucet_id'] )->update( ['is_owe'=>(!$faucet->is_owe) ] );
 				$faucet	= Faucet::find( $data['prev_faucet_id'] );
 				break;
 

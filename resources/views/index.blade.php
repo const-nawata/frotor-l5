@@ -17,7 +17,7 @@
 			Id: <div class="badge" id="faucet_id">{!! $faucet->id !!}</div>
 			<div class="btn-group btn-group-xs" role="group" aria-label="Faucet id">
 				{!! Form::button('',['id'=>'new_tab_btn','class'=>'btn btn-default glyphicon glyphicon-new-window','title'=>$texts['new_window']]) !!}
-				{!! Form::button('',['id'=>'owe_btn','class'=>'btn btn-default glyphicon glyphicon-warning-sign','title'=>$texts['owe_status']]) !!}
+				{!! Form::button('',['id'=>'debt_btn','class'=>'btn btn-default glyphicon glyphicon-warning-sign','title'=>$texts['debt_status']]) !!}
 			</div>
 		</td>
 
@@ -31,9 +31,7 @@
 				{!! Form::text('priority',$faucet->priority,['id'=>'priority','class'=>'form-control']) !!}
 				{!! Form::hidden('order',$order,['id'=>'order']) !!}
 				<span class="input-group-btn">
-
 		        	{!! Form::button('',['id'=>'change_order_btn','class'=>'btn btn-default glyphicon glyphicon-arrow-'.($order=='asc'?'up':'down').' order-btn','title'=>'Set order '.($order!='asc'?'ascended':'descended')]) !!}
-
 				</span>
 			</div>
 		</td>
@@ -106,7 +104,7 @@ $(document).ready(function(){
 				loadFaucet(true);
 				break;
 
-			case "owe_btn":
+			case "debt_btn":
 				$('#faucetForm').submit();
 				break;
 
