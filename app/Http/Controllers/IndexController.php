@@ -35,7 +35,11 @@ class IndexController extends Controller{
     		'n_all'			=> $count['n_all'],
     		'n_act'			=> $count['n_act'],
     		'btn_grp_css'	=> ($faucet->id != NULL ? 'btn4' : 'btn2'),
-    		'order'			=> Session::get( 'order' )
+    		'order'			=> Session::get( 'order' ),
+    		'texts'		=> [
+    			'new_window'	=> 'New window',
+    			'owe_status'	=> $faucet->is_owe ? 'Unset owe' : 'Set owe'
+    		]
     	]);
     }
 //______________________________________________________________________________
@@ -65,7 +69,6 @@ class IndexController extends Controller{
 				break;
 
 			case 'tomorrow':
-
 				Faucet::updateUntilTomorrow( $data );
 				$faucet	= Faucet::firstReady();
 				break;
@@ -74,6 +77,10 @@ class IndexController extends Controller{
 				$result	= Faucet::where( 'id', $data['prev_faucet_id'] )->update( ['duration'=>$data['cduration'] * 60] );
 				$faucet	= Faucet::find( $data['prev_faucet_id'] );
 				$message	= 'New duration successfully saved.';
+				break;
+
+			case 'change_owe':
+				$faucet	= Faucet::find( $data['prev_faucet_id'] );
 				break;
 
 			case 'change_order':
@@ -89,6 +96,7 @@ class IndexController extends Controller{
     		'duration'	=> $faucet->duration,
     		'priority'	=> $faucet->priority,
     		'info'		=> $faucet->info,
+			'is_owe'	=> $faucet->is_owe,
     		'last_pay'	=> self::getLastPayInfo( $faucet ),
     		'n_all'	=> $count['n_all'],
     		'n_act'	=> $count['n_act']
