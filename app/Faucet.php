@@ -112,7 +112,8 @@ class Faucet extends Model{
 
 		$data_new	= [
 			'until'		=> date( 'Y-m-d 00:00:01', strtotime('+1 day' )),
-			'priority'	=> $data['priority']
+			'priority'	=> $data['priority'],
+			'is_debt'	=> true
 		];
 
 		$faucet	= self::where( 'id', $data['prev_faucet_id'] )->update( $data_new );
