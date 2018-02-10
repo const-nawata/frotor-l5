@@ -1,11 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use Session;
 use App\Faucet;
-use Response;
 use App\Http\Requests\ActionFaucetRequest;
-use App\Http\Requests\SaveFaucetRequest;
 use App\Http\Requests\ResetAllRequest;
+use App\Http\Requests\SaveFaucetRequest;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 use DateTime;
 
 class IndexController extends Controller{
